@@ -18,6 +18,7 @@
 		B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */; };
 		B505CAD82A67913D009939A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD72A67913D009939A5 /* CameraView.swift */; };
 		B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD92A68B6FB009939A5 /* VisionView.swift */; };
+		B505CADF2A6E4EF5009939A5 /* dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CADE2A6E4EF5009939A5 /* dist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionVM.swift; sourceTree = "<group>"; };
 		B505CAD72A67913D009939A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		B505CAD92A68B6FB009939A5 /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
+		B505CADE2A6E4EF5009939A5 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
+				B505CADD2A6E4EE1009939A5 /* Global Function */,
 				B505CAD62A679128009939A5 /* View */,
 				B505CAD12A678E75009939A5 /* ViewModel */,
 				7E60D4762A5FA571008D5035 /* BrowLabApp.swift */,
@@ -153,6 +156,14 @@
 				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B505CADD2A6E4EE1009939A5 /* Global Function */ = {
+			isa = PBXGroup;
+			children = (
+				B505CADE2A6E4EF5009939A5 /* dist.swift */,
+			);
+			path = "Global Function";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B505CADF2A6E4EF5009939A5 /* dist.swift in Sources */,
 				B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */,
 				B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */,
 				7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */,

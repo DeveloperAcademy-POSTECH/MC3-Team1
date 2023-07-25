@@ -39,4 +39,27 @@ class PreviewView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var videoPreviewLayer: AVCaptureVideoPreviewLayer {
+        return layer as! AVCaptureVideoPreviewLayer
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let previewLayer = self.videoPreviewLayer
+        previewLayer.frame = self.bounds
+        
+
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if nil != self.superview {
+            self.videoPreviewLayer.session = self.captureSession
+            self.videoPreviewLayer.videoGravity = .resizeAspectFill
+        }
+    }
+
 }
+
