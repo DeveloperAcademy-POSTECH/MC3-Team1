@@ -16,18 +16,18 @@ class CaptureSession: NSObject, ObservableObject {
     func setup() {
         var allowedAccess = false
         let blocker = DispatchGroup()
-        blocker.enter()
-        AVCaptureDevice.requestAccess(for: .video) { flag in
-            allowedAccess = flag
-            blocker.leave()
-        }
-        blocker.wait()
-        if !allowedAccess { return }
-        
-        if !allowedAccess {
-            print("Camera access is not allowed.")
-            return
-        }
+//        blocker.enter()
+//        AVCaptureDevice.requestAccess(for: .video) { flag in
+//            allowedAccess = flag
+//            blocker.leave()
+//        }
+//        blocker.wait()
+//        if !allowedAccess { return }
+//        
+//        if !allowedAccess {
+//            print("Camera access is not allowed.")
+//            return
+//        }
         
         let session = AVCaptureSession()
         session.beginConfiguration()

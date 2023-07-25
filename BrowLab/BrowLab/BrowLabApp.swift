@@ -28,6 +28,7 @@ struct BrowLabApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject var covertedPoints: ConvertedPoints
+    let camPermission = PermissionManager()
     
     var body: some Scene {
         WindowGroup {
@@ -37,10 +38,16 @@ struct BrowLabApp: App {
         }.onChange(of: scenePhase) { (newScenePhase) in
             switch newScenePhase {
             case .active:
-                appDelegate.captureSession.setup()
-                appDelegate.captureSession.start()
+                if camPermission.isCameraAuthorized() {
+                    appDelegate.captureSession.setup()
+                    appDelegate.captureSession.start()
+                    print("active, cam authorized")
+                } else {
+                    print("active, cam not authorized")
+                }
             case .background:
                 appDelegate.captureSession.stop()
+                print("background")
             case .inactive:
                 print("inactive")
             @unknown default:
