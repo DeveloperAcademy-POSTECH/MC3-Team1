@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
 
         if self.isMain{
-            VisionView()
+            BrowView()
                 .fullScreenCover(isPresented: $isFirstLaunching) {
                     OnBoardingViews(isFirstLaunching: $isFirstLaunching)
                 }

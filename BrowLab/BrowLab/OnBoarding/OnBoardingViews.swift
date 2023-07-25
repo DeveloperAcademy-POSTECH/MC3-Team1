@@ -15,16 +15,17 @@ struct OnBoardingViews: View {
     
     
     var body: some View {
-        
         TabNavigation(selectedTab: $selectedTab) {
             FirstOnView(selectedTab: $selectedTab)
                 .tag(1)
             
-            SecondOnView(selectedTab: $selectedTab, isFirst: $isFirstLaunching)
+            SecondOnView(selectedTab: $selectedTab)
                 .tag(2)
             
-            ThirdOnView(selectedTab: $selectedTab, isFirst: $isFirstLaunching)
+            ThirdOnView(selectedTab: $selectedTab)
                 .tag(3)
+            VisionView(isFirst: $isFirstLaunching)
+                .tag(4)
         } 
     }
 }

@@ -10,7 +10,6 @@ import AVFoundation
 
 struct SecondOnView: View {
     @Binding var selectedTab: Int
-    @Binding var isFirst: Bool
     
     @State private var permissionRejected = false
     
@@ -43,8 +42,7 @@ struct SecondOnView: View {
                 cameraAcess.checkCameraPermission { granted in
                     if granted{
                         print("Camera: 권한 허용")
-                        isFirst = false
-                        
+                        selectedTab = 4
                     }else{
                         permissionRejected = true
                     }

@@ -13,9 +13,9 @@ class ConversionModel: ObservableObject {
     // mountainZ = -(height of mountains of eyebrows from the center of face anchor)
     @Published var mountainZ: Float = 0.0
     // eyebrowLength = length of eyebrow
-    @Published var eyebrowLengthDictionary: [String: Float] = []
+    @Published var eyebrowLengthDictionary: [String: Float] = [:]
     
-    func getThreeValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) -> (Float, Float, [String: Float]) {
+    func getThreeValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
         /*
          a: outer end of left eye
          b: inner end of left eye
@@ -68,9 +68,9 @@ class ConversionModel: ObservableObject {
         let proportionalConstantOfMountainZ = 0.1
         let proportionalConstantOfEyebrowLength = 0.1
         
-        headX = proportionalConstantOfHeadX * dist(i, j) / base
+        headX = Float(proportionalConstantOfHeadX * dist(i, j) / base)
         
-        mountainZ = -proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base
+        mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base)
         
         eyebrowLengthDictionary = [String: Float]()
         

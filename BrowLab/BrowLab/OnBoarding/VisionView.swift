@@ -9,6 +9,7 @@ import SwiftUI
 import Vision
 
 struct VisionView: View {
+    @Binding var isFirst: Bool
     
     @EnvironmentObject var faceDetector: FaceDetector
     @EnvironmentObject var captureSession: CaptureSession
@@ -57,6 +58,9 @@ struct VisionView: View {
             if (faceDetector.yaw < 0.05 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.05 && faceDetector.pitch > -0.05)
                 && (abs(convertedPoints[10].x - middlePoint.x) < 20) {
                 ScanCheck = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+2){
+                    isFirst = false
+                }
                 self.scanPoints = convertedPoints
                 captureSession.stop()
                 print(scanPoints)
@@ -119,6 +123,8 @@ struct VisionView: View {
     func ScanView1() -> some View {
         
         if ScanCheck {
+            
+            
             ZStack {
                 VStack {
                     ZStack {
