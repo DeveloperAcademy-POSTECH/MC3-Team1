@@ -19,6 +19,7 @@ struct VisionView: View {
     
     @State var allPoints = [CGPoint]()
     @State var toARSend = [CGPoint]()
+    @State var scanPoints = [CGPoint]()
     let middlePoint = CGPoint(x: UIScreen.main.bounds.width / 2 , y: UIScreen.main.bounds.height / 2.5)
     
     var body: some View {
@@ -53,12 +54,14 @@ struct VisionView: View {
             //            print(convertedPoints)
             //            print("\(faceDetector.yaw) : \(faceDetector.pitch)")
             
-            if (faceDetector.yaw < 0.03 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.03 && faceDetector.pitch > -0.05)
+            if (faceDetector.yaw < 0.05 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.05 && faceDetector.pitch > -0.05)
                 && (abs(convertedPoints[10].x - middlePoint.x) < 20) {
                 ScanCheck = true
-            //                captureSession.stop()
+                self.scanPoints = convertedPoints
+                captureSession.stop()
+                print(scanPoints)
             }
-            //            print("\(convertedPoints[16]) : \(middlePoint)")
+                        print("\(convertedPoints[10]) : \(middlePoint)")
             
         }
     }
