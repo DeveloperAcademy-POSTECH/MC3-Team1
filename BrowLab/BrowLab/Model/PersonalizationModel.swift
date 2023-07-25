@@ -9,10 +9,15 @@ import Foundation
 
 class PersonalizationModel: ObservableObject {
     
+    // proportional constants for each values (a.k.a. k1, k2, k3 each)
+    // need to get k1, k2, k3 through real world experiment
+    private let proportionalConstantOfHeadX = 0.0516
+    private let proportionalConstantOfMountainZ = 0.1147
+    private let proportionalConstantOfEyebrowLength = 0.055
     
     static let basicHeadX: Float = 0.012
-    static let basicMountainZ: Float = -0.05
-    static let basicEyebrowLengthDictionary: [String: Float] = ["basic": 0.047]
+    static let basicMountainZ: Float = -0.057
+    static let basicEyebrowLengthDictionary: [String: Float] = ["Basic": 0.049]
     
     // headX = (distance between two heads of eyebrows) / 2
     @Published var headX: Float = basicHeadX
@@ -68,13 +73,7 @@ class PersonalizationModel: ObservableObject {
         // base is a value that is proportional to the size(1D) of face
         let base = dist(l, p1) + dist(r, p1) + dist(m, p1)
         
-        // proportional constants for each values (a.k.a. k1, k2, k3 each)
-        // need to get k1, k2, k3 through real world experiment
-        let proportionalConstantOfHeadX = 0.1
-        let proportionalConstantOfMountainZ = 0.1
-        let proportionalConstantOfEyebrowLength = 0.1
-        
-        headX = Float(proportionalConstantOfHeadX * dist(i, j) / base)
+        headX = Float(proportionalConstantOfHeadX * dist(i, j) * 0.5 / base)
         
         mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base)
         

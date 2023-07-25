@@ -17,6 +17,8 @@ class ARVM: ObservableObject {
             print("Your device does not support face anchors!")
         } else {
             let configuration = ARFaceTrackingConfiguration()
+            // disable face occlusion
+            arView.renderOptions.insert(.disableFaceMesh)
         }
     }
     
