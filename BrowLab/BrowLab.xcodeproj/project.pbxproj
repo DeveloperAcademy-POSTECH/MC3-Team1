@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57E766EF2A6F583400C3AED0 /* EyebrowAssetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E766EE2A6F583400C3AED0 /* EyebrowAssetData.swift */; };
+		57E766F22A6F589B00C3AED0 /* ConverisonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57E766F12A6F589B00C3AED0 /* ConverisonModel.swift */; };
 		7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4762A5FA571008D5035 /* BrowLabApp.swift */; };
 		7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4782A5FA571008D5035 /* ContentView.swift */; };
 		7E60D47B2A5FA573008D5035 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E60D47A2A5FA573008D5035 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57E766EE2A6F583400C3AED0 /* EyebrowAssetData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyebrowAssetData.swift; sourceTree = "<group>"; };
+		57E766F12A6F589B00C3AED0 /* ConverisonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverisonModel.swift; sourceTree = "<group>"; };
 		7E60D4732A5FA571008D5035 /* BrowLab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrowLab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E60D4762A5FA571008D5035 /* BrowLabApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabApp.swift; sourceTree = "<group>"; };
 		7E60D4782A5FA571008D5035 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +85,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57E766EB2A6F577200C3AED0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				57E766F12A6F589B00C3AED0 /* ConverisonModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		57E766F02A6F585900C3AED0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				57E766EE2A6F583400C3AED0 /* EyebrowAssetData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		7E60D46A2A5FA571008D5035 = {
 			isa = PBXGroup;
 			children = (
@@ -105,9 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				B505CADD2A6E4EE1009939A5 /* Global Function */,
+				57E766EB2A6F577200C3AED0 /* Model */,
 				B505CAD62A679128009939A5 /* View */,
 				B505CAD12A678E75009939A5 /* ViewModel */,
 				7E60D4762A5FA571008D5035 /* BrowLabApp.swift */,
+				57E766F02A6F585900C3AED0 /* Data */,
 				7E60D47A2A5FA573008D5035 /* Assets.xcassets */,
 				7E60D47C2A5FA573008D5035 /* Preview Content */,
 			);
@@ -300,8 +322,10 @@
 				B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */,
 				B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */,
 				7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */,
+				57E766F22A6F589B00C3AED0 /* ConverisonModel.swift in Sources */,
 				B505CAD32A678F00009939A5 /* FaceDetectorVM.swift in Sources */,
 				B505CAD82A67913D009939A5 /* CameraView.swift in Sources */,
+				57E766EF2A6F583400C3AED0 /* EyebrowAssetData.swift in Sources */,
 				7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
