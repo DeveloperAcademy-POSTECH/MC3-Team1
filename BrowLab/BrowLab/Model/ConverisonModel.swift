@@ -9,11 +9,11 @@ import Foundation
 
 class ConversionModel: ObservableObject {
     // headX = (distance between two heads of eyebrows) / 2
-    @Published var headX: Float = 0.0
+    @Published var headX: Float = 0.012
     // mountainZ = -(height of mountains of eyebrows from the center of face anchor)
-    @Published var mountainZ: Float = 0.0
+    @Published var mountainZ: Float = -0.05
     // eyebrowLength = length of eyebrow
-    @Published var eyebrowLengthDictionary: [String: Float] = [:]
+    @Published var eyebrowLengthDictionary: [String: Float] = ["basic": 0.047]
     
     func getThreeValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
         /*
@@ -77,7 +77,7 @@ class ConversionModel: ObservableObject {
         let tempFactor1 = proportionalConstantOfEyebrowLength * (max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5) * (dist(p2, q) + (dist(a, b) + dist(c, d)) * 0.5)
         
         for name in EyebrowAssetData.eyebrowNameArray {
-            let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * (EyebrowAssetData.eyebrowRatioDictionary[name] ?? EyebrowAssetData.basicEyebrowRatio)
+            let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * (EyebrowAssetData.ratioDictionary[name] ?? EyebrowAssetData.basicRatio)
             
             eyebrowLengthDictionary[name] = Float(tempFactor1 / tempFactor2 / base)
         }
