@@ -10,6 +10,11 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("_isFirstLaunching") var isFirstLaunching: Bool = true
     
+    @EnvironmentObject var faceDetector: FaceDetector
+    @EnvironmentObject var captureSession: CaptureSession
+    @EnvironmentObject var arVM: ARVM
+    @EnvironmentObject var personalizationModel: PersonalizationModel
+    
     @State var isMain : Bool = false
     
     let camPermission = PermissionManager()
@@ -18,8 +23,13 @@ struct ContentView: View {
 
         if self.isMain{
             BrowView()
+                .environmentObject(arVM)
+                .environmentObject(personalizationModel)
                 .fullScreenCover(isPresented: $isFirstLaunching) {
                     OnBoardingViews(isFirstLaunching: $isFirstLaunching)
+                        .environmentObject(faceDetector)
+                        .environmentObject(captureSession)
+                        .environmentObject(personalizationModel)
                 }
         } else{
             SplashView()

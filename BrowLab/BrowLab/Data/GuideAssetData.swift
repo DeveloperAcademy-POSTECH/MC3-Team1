@@ -1,20 +1,20 @@
 //
-//  EyebrowAssetRatio.swift
-//  formula code 2
+//  GuideAssetData.swift
+//  BrowLab
 //
-//  Created by Wonil Lee on 2023/07/23.
+//  Created by Wonil Lee on 2023/07/25.
 //
 
 import Foundation
 
-
-enum EyebrowAssetData {
+// This enum is not in use
+enum GuideAssetData {
     // Need ratio of each assets to get personalized values
     
-    // all names of eyebrow
-    static let eyebrowNameArray = ["Option 1", "Option 2", "Option 3", "Option 4"]
+    // all names of guide
+    static let guideNameArray = EyebrowAssetData.eyebrowNameArray
     
-    // (v / h) ratio of each eyebrow asset
+    // (v / h) ratio of each guide asset
     static let ratioDictionary: [String: Double] = [
         "Basic": basicRatio,
         "Option 1": 0.266,
@@ -24,5 +24,5 @@ enum EyebrowAssetData {
     ]
     
     // ratio value to be used for invalid name
-    static let basicRatio = 0.266
+    static let basicRatio = 0.22
 }

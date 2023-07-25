@@ -12,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let captureSession = CaptureSession()
     let faceDetector = FaceDetector()
+    let arVM = ARVM()
+    let personalizationModel = PersonalizationModel()
     
     var cancellables = [AnyCancellable]()
     
@@ -35,6 +37,8 @@ struct BrowLabApp: App {
             ContentView()
                 .environmentObject(appDelegate.faceDetector)
                 .environmentObject(appDelegate.captureSession)
+                .environmentObject(appDelegate.arVM)
+                .environmentObject(appDelegate.personalizationModel)
         }.onChange(of: scenePhase) { (newScenePhase) in
             switch newScenePhase {
             case .active:

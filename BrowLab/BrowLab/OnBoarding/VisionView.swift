@@ -13,10 +13,11 @@ struct VisionView: View {
     
     @EnvironmentObject var faceDetector: FaceDetector
     @EnvironmentObject var captureSession: CaptureSession
+    @EnvironmentObject var personalizationModel: PersonalizationModel
+    
     @StateObject var convertedPoints = ConvertedPoints()
     @State var ScanCheck: Bool = false
     @State var smoothedPoints = [CGPoint]() // 이전 위치들의 평균값을 저장하는 배열
-    
     
     @State var allPoints = [CGPoint]()
     @State var toARSend = [CGPoint]()
@@ -38,7 +39,7 @@ struct VisionView: View {
             
             let indicesToExtract = [0, 1, 7, 8, 15, 18, 21, 24, 26, 34, 49, 50, 54, 55, 56, 59, 67, 75]
             
-
+            
             self.toARSend = indicesToExtract.compactMap { index in
                 guard index < allPoints.count else {
                     return nil
@@ -63,9 +64,10 @@ struct VisionView: View {
                 }
                 self.scanPoints = convertedPoints
                 captureSession.stop()
-                print(scanPoints)
+                personalizationModel.getPersonalizedValues(a: scanPoints[2], b: scanPoints[3], c: scanPoints[1], d: scanPoints[0], e: scanPoints[15], f: scanPoints[17], g: scanPoints[13], h: scanPoints[14], i: scanPoints[11], j: scanPoints[12], u: scanPoints[8], v: scanPoints[9], alpha: scanPoints[7], beta: scanPoints[6], gamma: scanPoints[5], delta: scanPoints[4])
+                print("VisionView | personalizedValues | headX: \(personalizationModel.headX), mountainZ: \(personalizationModel.mountainZ), eyebrowLengthDictionary: \(personalizationModel.eyebrowLengthDictionary)")
             }
-                        print("\(convertedPoints[10]) : \(middlePoint)")
+//            print("\(convertedPoints[10]) : \(middlePoint)")
             
         }
     }
