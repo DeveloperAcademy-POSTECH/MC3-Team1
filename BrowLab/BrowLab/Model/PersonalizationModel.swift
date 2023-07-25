@@ -1,5 +1,5 @@
 //
-//  ConverisonModel.swift
+//  PersonalizationModel.swift
 //  BrowLab
 //
 //  Created by Wonil Lee on 2023/07/25.
@@ -7,15 +7,21 @@
 
 import Foundation
 
-class ConversionModel: ObservableObject {
-    // headX = (distance between two heads of eyebrows) / 2
-    @Published var headX: Float = 0.012
-    // mountainZ = -(height of mountains of eyebrows from the center of face anchor)
-    @Published var mountainZ: Float = -0.05
-    // eyebrowLength = length of eyebrow
-    @Published var eyebrowLengthDictionary: [String: Float] = ["basic": 0.047]
+class PersonalizationModel: ObservableObject {
     
-    func getThreeValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
+    
+    static let basicHeadX: Float = 0.012
+    static let basicMountainZ: Float = -0.05
+    static let basicEyebrowLengthDictionary: [String: Float] = ["basic": 0.047]
+    
+    // headX = (distance between two heads of eyebrows) / 2
+    @Published var headX: Float = basicHeadX
+    // mountainZ = -(height of mountains of eyebrows from the center of face anchor)
+    @Published var mountainZ: Float = basicMountainZ
+    // eyebrowLength = length of eyebrow
+    @Published var eyebrowLengthDictionary: [String: Float] = basicEyebrowLengthDictionary
+    
+    func getPersonalizedValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
         /*
          a: outer end of left eye
          b: inner end of left eye

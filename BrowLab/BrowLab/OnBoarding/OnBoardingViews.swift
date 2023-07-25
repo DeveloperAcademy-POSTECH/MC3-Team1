@@ -10,6 +10,10 @@ import SwiftUI
 
 
 struct OnBoardingViews: View {
+    @EnvironmentObject var faceDetector: FaceDetector
+    @EnvironmentObject var captureSession: CaptureSession
+    @EnvironmentObject var personalizationModel: PersonalizationModel
+    
     @Binding var isFirstLaunching: Bool
     @State private var selectedTab: Int = 1
     
@@ -24,7 +28,11 @@ struct OnBoardingViews: View {
             
             ThirdOnView(selectedTab: $selectedTab)
                 .tag(3)
+            
             VisionView(isFirst: $isFirstLaunching)
+                .environmentObject(faceDetector)
+                .environmentObject(captureSession)
+                .environmentObject(personalizationModel)
                 .tag(4)
         } 
     }

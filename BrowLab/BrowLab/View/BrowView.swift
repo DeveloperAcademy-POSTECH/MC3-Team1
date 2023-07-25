@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct BrowView: View {
-    @StateObject var arVM = ARVM()
-    @StateObject var conversionModel = ConversionModel()
+    @EnvironmentObject var arVM: ARVM
+    @EnvironmentObject var personalizationModel: PersonalizationModel
     
     @State var modelIsShown = false
     
@@ -76,14 +76,14 @@ struct BrowView: View {
                 let size = boundingBox.extents
                 let originSize = boundingBox.extents
                 
-                let scaleX: Float = conversionModel.eyebrowLengthDictionary[option] ?? conversionModel.eyebrowLengthDictionary["basic"]! / originSize.x
+                let scaleX: Float = personalizationModel.eyebrowLengthDictionary[option] ?? personalizationModel.eyebrowLengthDictionary["basic"]! / originSize.x
                 
                 faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
                 
                 centerW = size[0]/2 * scaleX
                 centerH = size[1]/2 * scaleX
                 
-                let position = SIMD3<Float>(x: Float(centerW+conversionModel.headX), y: 0.05, z: Float(centerH+conversionModel.mountainZ))
+                let position = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.05, z: Float(centerH+personalizationModel.mountainZ))
                 faceAnchor.right?.position = position
                 
             } else{
