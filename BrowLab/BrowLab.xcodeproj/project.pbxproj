@@ -14,6 +14,11 @@
 		7E60D4882A5FA573008D5035 /* BrowLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4872A5FA573008D5035 /* BrowLabTests.swift */; };
 		7E60D4922A5FA573008D5035 /* BrowLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4912A5FA573008D5035 /* BrowLabUITests.swift */; };
 		7E60D4942A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */; };
+		B505CAD32A678F00009939A5 /* FaceDetectorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD22A678F00009939A5 /* FaceDetectorVM.swift */; };
+		B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */; };
+		B505CAD82A67913D009939A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD72A67913D009939A5 /* CameraView.swift */; };
+		B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CAD92A68B6FB009939A5 /* VisionView.swift */; };
+		B505CADF2A6E4EF5009939A5 /* dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = B505CADE2A6E4EF5009939A5 /* dist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +49,11 @@
 		7E60D48D2A5FA573008D5035 /* BrowLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E60D4912A5FA573008D5035 /* BrowLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITests.swift; sourceTree = "<group>"; };
 		7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B505CAD22A678F00009939A5 /* FaceDetectorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceDetectorVM.swift; sourceTree = "<group>"; };
+		B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionVM.swift; sourceTree = "<group>"; };
+		B505CAD72A67913D009939A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		B505CAD92A68B6FB009939A5 /* VisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionView.swift; sourceTree = "<group>"; };
+		B505CADE2A6E4EF5009939A5 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +104,10 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
+				B505CADD2A6E4EE1009939A5 /* Global Function */,
+				B505CAD62A679128009939A5 /* View */,
+				B505CAD12A678E75009939A5 /* ViewModel */,
 				7E60D4762A5FA571008D5035 /* BrowLabApp.swift */,
-				7E60D4782A5FA571008D5035 /* ContentView.swift */,
 				7E60D47A2A5FA573008D5035 /* Assets.xcassets */,
 				7E60D47C2A5FA573008D5035 /* Preview Content */,
 			);
@@ -125,6 +137,33 @@
 				7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */,
 			);
 			path = BrowLabUITests;
+			sourceTree = "<group>";
+		};
+		B505CAD12A678E75009939A5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B505CAD22A678F00009939A5 /* FaceDetectorVM.swift */,
+				B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B505CAD62A679128009939A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7E60D4782A5FA571008D5035 /* ContentView.swift */,
+				B505CAD72A67913D009939A5 /* CameraView.swift */,
+				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B505CADD2A6E4EE1009939A5 /* Global Function */ = {
+			isa = PBXGroup;
+			children = (
+				B505CADE2A6E4EF5009939A5 /* dist.swift */,
+			);
+			path = "Global Function";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,7 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B505CADF2A6E4EF5009939A5 /* dist.swift in Sources */,
+				B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */,
+				B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */,
 				7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */,
+				B505CAD32A678F00009939A5 /* FaceDetectorVM.swift in Sources */,
+				B505CAD82A67913D009939A5 /* CameraView.swift in Sources */,
 				7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -417,9 +461,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed for streaming video";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -430,7 +475,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mc3.one.BrowLab;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,9 +491,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is needed for streaming video";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -459,7 +505,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mc3.one.BrowLab;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
