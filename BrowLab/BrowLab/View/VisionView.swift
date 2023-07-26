@@ -56,8 +56,8 @@ struct VisionView: View {
             //            print(convertedPoints)
             //            print("\(faceDetector.yaw) : \(faceDetector.pitch)")
             
-            if (faceDetector.yaw < 0.05 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.05 && faceDetector.pitch > -0.05)
-                && (abs(convertedPoints[10].x - middlePoint.x) < 20) {
+            if (faceDetector.yaw < 0.03 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.03 && faceDetector.pitch > -0.05)
+                && (abs(convertedPoints[10].x - middlePoint.x) < 10) {
                 ScanCheck = true
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     isFirst = false

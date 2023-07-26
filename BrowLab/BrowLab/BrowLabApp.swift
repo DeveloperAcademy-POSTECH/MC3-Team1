@@ -50,7 +50,7 @@ struct BrowLabApp: App {
                     print("active, cam not authorized")
                 }
             case .background:
-                appDelegate.captureSession.stop()
+//                appDelegate.captureSession.stop()
                 print("background")
             case .inactive:
                 print("inactive")

@@ -161,7 +161,6 @@
 				57E766EB2A6F577200C3AED0 /* Model */,
 				B505CAD62A679128009939A5 /* View */,
 				B505CAD12A678E75009939A5 /* ViewModel */,
-				AEF455402A6E4359001855DB /* OnBoarding */,
 				7E60D4762A5FA571008D5035 /* BrowLabApp.swift */,
 				576CBBF82A6F6DB4007230F8 /* Reality Composer Project */,
 				57E766F02A6F585900C3AED0 /* Data */,
@@ -200,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				AEA222362A6F6084003212D3 /* dist.swift */,
+				AEF4554D2A6E5124001855DB /* CameraPermission.swift */,
 			);
 			path = "Global Function";
 			sourceTree = "<group>";
@@ -207,11 +207,9 @@
 		AEF455402A6E4359001855DB /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
 				AEF455412A6E4383001855DB /* FirstOnView.swift */,
 				AEF455432A6E4958001855DB /* SecondOnView.swift */,
 				AEF455452A6E4B6F001855DB /* ThirdOnView.swift */,
-				AEF4554D2A6E5124001855DB /* CameraPermission.swift */,
 				AEF455502A6E5BE6001855DB /* OnBoardingViews.swift */,
 				AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */,
 			);
@@ -231,10 +229,12 @@
 		B505CAD62A679128009939A5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AEF455402A6E4359001855DB /* OnBoarding */,
 				7E60D4782A5FA571008D5035 /* ContentView.swift */,
 				B505CAD72A67913D009939A5 /* CameraView.swift */,
 				AEA222382A6F6520003212D3 /* BrowView.swift */,
 				576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */,
+				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = SL6KBD5WZW;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -562,7 +562,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mc3.team1.BrowLab;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -578,7 +578,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = SL6KBD5WZW;
+				DEVELOPMENT_TEAM = YKG7843K2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -593,7 +593,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = mc3.team1.BrowLab;
+				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
