@@ -11,6 +11,9 @@ import UIKit
 
 class CaptureSession: NSObject, ObservableObject {
     @Published var sampleBuffer: CMSampleBuffer?
+    @Published var color: UIColor = .cyan
+    @Published var originImage: UIImage?
+    @Published var hairImage: CIImage?
     @Published var isFace = false
     @Published var takePhoto = false
     
