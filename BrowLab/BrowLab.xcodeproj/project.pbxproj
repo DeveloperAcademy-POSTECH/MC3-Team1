@@ -20,6 +20,7 @@
 		7E60D4882A5FA573008D5035 /* BrowLabTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4872A5FA573008D5035 /* BrowLabTests.swift */; };
 		7E60D4922A5FA573008D5035 /* BrowLabUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4912A5FA573008D5035 /* BrowLabUITests.swift */; };
 		7E60D4942A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */; };
+		7E60D54A2A702747008D5035 /* AVCaptureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D5492A702747008D5035 /* AVCaptureVM.swift */; };
 		AEA222372A6F6084003212D3 /* dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA222362A6F6084003212D3 /* dist.swift */; };
 		AEA222392A6F6520003212D3 /* BrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA222382A6F6520003212D3 /* BrowView.swift */; };
 		AEE3ECCB2A6F500C00DA0BFD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */; };
@@ -69,6 +70,7 @@
 		7E60D48D2A5FA573008D5035 /* BrowLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E60D4912A5FA573008D5035 /* BrowLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITests.swift; sourceTree = "<group>"; };
 		7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7E60D5492A702747008D5035 /* AVCaptureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVM.swift; sourceTree = "<group>"; };
 		AEA222362A6F6084003212D3 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 		AEA222382A6F6520003212D3 /* BrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowView.swift; sourceTree = "<group>"; };
 		AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				B505CAD22A678F00009939A5 /* FaceDetectorVM.swift */,
 				B505CAD42A678F88009939A5 /* CaptureSessionVM.swift */,
 				576CBBF42A6F6B2A007230F8 /* ARVM.swift */,
+				7E60D5492A702747008D5035 /* AVCaptureVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */,
 				576CBBFB2A6F70BC007230F8 /* SampleEyebrow.rcproject in Sources */,
 				AEF455442A6E4958001855DB /* SecondOnView.swift in Sources */,
+				7E60D54A2A702747008D5035 /* AVCaptureVM.swift in Sources */,
 				AEE3ECCB2A6F500C00DA0BFD /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,7 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = NM2S86642U;
+				DEVELOPMENT_TEAM = FLG797DV64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -578,7 +582,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = SL6KBD5WZW;
+				DEVELOPMENT_TEAM = FLG797DV64;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
