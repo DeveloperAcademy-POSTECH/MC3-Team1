@@ -20,22 +20,29 @@ struct ContentView: View {
     let camPermission = PermissionManager()
     
     var body: some View {
-
+        
         if self.isMain{
-            BrowView()
-                .environmentObject(arVM)
-                .environmentObject(personalizationModel)
-                .fullScreenCover(isPresented: $isFirstLaunching) {
-                    OnBoardingViews(isFirstLaunching: $isFirstLaunching)
-                        .environmentObject(faceDetector)
-                        .environmentObject(captureSession)
-                        .environmentObject(personalizationModel)
-                }
+            if !isFirstLaunching{
+                //let _ = print(isFirstLaunching)
+                BrowView()
+                    .environmentObject(arVM)
+                    .environmentObject(personalizationModel)
+                    
+            } else{
+                let _ = print(isFirstLaunching)
+                Text("")
+                    .fullScreenCover(isPresented: $isFirstLaunching) {
+                        OnBoardingViews(isFirstLaunching: $isFirstLaunching)
+                            .environmentObject(faceDetector)
+                            .environmentObject(captureSession)
+                            .environmentObject(personalizationModel)
+                    }
+            }
         } else{
             SplashView()
                 .transition(.opacity)
                 .onAppear {
-                    isFirstLaunching = !camPermission.isCameraAuthorized()
+                    //isFirstLaunching = !camPermission.isCameraAuthorized()
                     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2){
                         withAnimation{
                             self.isMain = true
