@@ -59,11 +59,13 @@ struct VisionView: View {
             if (faceDetector.yaw < 0.05 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.05 && faceDetector.pitch > -0.05)
                 && (abs(convertedPoints[10].x - middlePoint.x) < 20) {
                 ScanCheck = true
+                captureSession.isFace = true
                 DispatchQueue.main.asyncAfter(deadline: .now()+2){
                     isFirst = false
+                    captureSession.stop()
                 }
                 self.scanPoints = convertedPoints
-                captureSession.stop()
+               
                 personalizationModel.getPersonalizedValues(a: scanPoints[2], b: scanPoints[3], c: scanPoints[1], d: scanPoints[0], e: scanPoints[15], f: scanPoints[17], g: scanPoints[13], h: scanPoints[14], i: scanPoints[11], j: scanPoints[12], u: scanPoints[8], v: scanPoints[9], alpha: scanPoints[7], beta: scanPoints[6], gamma: scanPoints[5], delta: scanPoints[4])
                 print("VisionView | personalizedValues | headX: \(personalizationModel.headX), mountainZ: \(personalizationModel.mountainZ), eyebrowLengthDictionary: \(personalizationModel.eyebrowLengthDictionary)")
             }

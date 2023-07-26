@@ -10,6 +10,8 @@ import AVFoundation
 
 class CaptureSession: NSObject, ObservableObject {
     @Published var sampleBuffer: CMSampleBuffer?
+    @Published var isFace = false
+    @Published var takePhoto = false
     
     var captureSession: AVCaptureSession?
     
@@ -71,6 +73,11 @@ class CaptureSession: NSObject, ObservableObject {
 
 extension CaptureSession: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        
+        if self.isFace && !takePhoto {
+            self.takePhoto = true
+        }
+        
         DispatchQueue.main.async {
             self.sampleBuffer = sampleBuffer
         }
