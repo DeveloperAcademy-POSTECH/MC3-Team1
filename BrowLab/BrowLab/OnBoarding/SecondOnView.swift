@@ -13,7 +13,7 @@ struct SecondOnView: View {
     
     @State private var permissionRejected = false
     
-    let cameraAcess = PermissionManager()
+    @StateObject var cameraAcess = PermissionManager()
     
     var body: some View {
         VStack{

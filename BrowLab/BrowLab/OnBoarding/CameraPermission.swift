@@ -11,11 +11,6 @@ import SwiftUI
 class PermissionManager : ObservableObject {
     @Published var permissionGranted = false
     
-    /**
-     * 카메라 권한을 요청합니다.
-     */
-    
-    
     func openAppSettings() {
         guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
             return
