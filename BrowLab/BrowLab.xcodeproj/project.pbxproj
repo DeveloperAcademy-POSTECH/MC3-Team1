@@ -52,7 +52,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		576CBBF22A6F69F8007230F8 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../../Downloads/Info.plist; sourceTree = "<group>"; };
 		576CBBF42A6F6B2A007230F8 /* ARVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVM.swift; sourceTree = "<group>"; };
 		576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SampleEyebrow.rcproject; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		7E60D48D2A5FA573008D5035 /* BrowLabUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrowLabUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E60D4912A5FA573008D5035 /* BrowLabUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITests.swift; sourceTree = "<group>"; };
 		7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AE9EBCB82A709BCC009522AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../Downloads/Info.plist; sourceTree = "<group>"; };
 		AEA222362A6F6084003212D3 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 		AEA222382A6F6520003212D3 /* BrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowView.swift; sourceTree = "<group>"; };
 		AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
-				576CBBF22A6F69F8007230F8 /* Info.plist */,
+				AE9EBCB82A709BCC009522AA /* Info.plist */,
 				AEA222352A6F607D003212D3 /* Global Function */,
 				57E766EB2A6F577200C3AED0 /* Model */,
 				B505CAD62A679128009939A5 /* View */,
@@ -547,7 +547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = NM2S86642U;
+				DEVELOPMENT_TEAM = SL6KBD5WZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
