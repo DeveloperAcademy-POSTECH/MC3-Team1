@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572D374C2A70CCB100762FC4 /* ArchEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */; };
+		572D374D2A70CCB100762FC4 /* AngularEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */; };
+		572D374E2A70CCB100762FC4 /* LinearEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */; };
+		572D374F2A70CCB100762FC4 /* RoundEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */; };
 		576CBBF52A6F6B2A007230F8 /* ARVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBF42A6F6B2A007230F8 /* ARVM.swift */; };
 		576CBBF72A6F6B63007230F8 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */; };
 		576CBBFB2A6F70BC007230F8 /* SampleEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */; };
@@ -53,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = ArchEyebrow.rcproject; sourceTree = "<group>"; };
+		572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = AngularEyebrow.rcproject; sourceTree = "<group>"; };
+		572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = LinearEyebrow.rcproject; sourceTree = "<group>"; };
+		572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = RoundEyebrow.rcproject; sourceTree = "<group>"; };
 		576CBBF42A6F6B2A007230F8 /* ARVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVM.swift; sourceTree = "<group>"; };
 		576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SampleEyebrow.rcproject; sourceTree = "<group>"; };
@@ -113,6 +121,10 @@
 		576CBBF82A6F6DB4007230F8 /* Reality Composer Project */ = {
 			isa = PBXGroup;
 			children = (
+				572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */,
+				572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */,
+				572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */,
+				572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */,
 				576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */,
 			);
 			path = "Reality Composer Project";
@@ -374,7 +386,9 @@
 			files = (
 				AE9EBCBB2A70C4B8009522AA /* PopUpView.swift in Sources */,
 				B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */,
+				572D374C2A70CCB100762FC4 /* ArchEyebrow.rcproject in Sources */,
 				B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */,
+				572D374F2A70CCB100762FC4 /* RoundEyebrow.rcproject in Sources */,
 				AEF455422A6E4383001855DB /* FirstOnView.swift in Sources */,
 				AEF455512A6E5BE6001855DB /* OnBoardingViews.swift in Sources */,
 				AEA222392A6F6520003212D3 /* BrowView.swift in Sources */,
@@ -388,10 +402,12 @@
 				B505CAD32A678F00009939A5 /* FaceDetectorVM.swift in Sources */,
 				AEA222372A6F6084003212D3 /* dist.swift in Sources */,
 				B505CAD82A67913D009939A5 /* CameraView.swift in Sources */,
+				572D374E2A70CCB100762FC4 /* LinearEyebrow.rcproject in Sources */,
 				57E766EF2A6F583400C3AED0 /* EyebrowAssetData.swift in Sources */,
 				7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */,
 				576CBBFB2A6F70BC007230F8 /* SampleEyebrow.rcproject in Sources */,
 				AEF455442A6E4958001855DB /* SecondOnView.swift in Sources */,
+				572D374D2A70CCB100762FC4 /* AngularEyebrow.rcproject in Sources */,
 				AEE3ECCB2A6F500C00DA0BFD /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,7 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = SL6KBD5WZW;
+				DEVELOPMENT_TEAM = NM2S86642U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -582,7 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = SL6KBD5WZW;
+				DEVELOPMENT_TEAM = NM2S86642U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;

@@ -10,8 +10,8 @@ import SwiftUI
 struct BrowView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
-    @State var modelIsShown = [String: Bool]()
     
+    @State var modelIsShown = [String: Bool]()
     @State var isScanViewOpened : Bool = false
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
@@ -110,7 +110,7 @@ struct BrowView: View {
         
     }
     func optionButtonTapped(_ option: String) {
-        // Handle the selection of an option here
+        // when tapped button is OFF now
         if !(modelIsShown[option]!) {
             print("Selected option: \(option)")
             for o in EyebrowAssetData.eyebrowNameArray {
@@ -120,41 +120,21 @@ struct BrowView: View {
             arVM.arView.scene.anchors.removeAll()
             
             // add the option
-            modelIsShown[option] = true
-            var faceAnchor = try! SampleEyebrow.loadScene()
-            // load scene for given option
             switch option {
-            case options[0]:
-                faceAnchor = try! SampleEyebrow.loadScene()
-            default:
-                faceAnchor = try! SampleEyebrow.loadScene()
+                case "일자 눈썹":
+                    arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                case "둥근 눈썹":
+                    arVM.addRoundEyebrow(personalizationModel: personalizationModel)
+                case "아치형 눈썹":
+                    arVM.addArchEyebrow(personalizationModel: personalizationModel)
+                case "각진 눈썹":
+                    arVM.addAngularEyebrow(personalizationModel: personalizationModel)
+                default:
+                    arVM.addSampleEyebrow(personalizationModel: personalizationModel)
             }
-            
-            var centerW: Float
-            var centerH: Float
-            
-            if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-                let size = boundingBox.extents
-                let originSize = boundingBox.extents
-                
-                let scaleX: Float = (personalizationModel.eyebrowLengthDictionary[option] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
-                
-                faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-                
-                centerW = size[0]/2 * scaleX
-                centerH = size[1]/2 * scaleX
-                
-                print("scaledW: \(centerW * 2.0)")
-                
-                let position = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-                faceAnchor.right?.position = position
-                
-            } else{
-                print("NOPE")
-            }
-            arVM.arView.scene.addAnchor(faceAnchor)
+            modelIsShown[option] = true
         }
-        // when model is ON
+        // when tapped button is already ON
         else {
             // remove all
             for o in EyebrowAssetData.eyebrowNameArray {
@@ -170,5 +150,6 @@ struct BrowView_Previews: PreviewProvider {
     static var previews: some View {
         BrowView()
             .environmentObject(ARVM())
+            .environmentObject(PersonalizationModel())
     }
 }
