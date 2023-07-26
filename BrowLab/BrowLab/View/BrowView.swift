@@ -10,8 +10,9 @@ import SwiftUI
 struct BrowView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
-    
     @State var modelIsShown = [String: Bool]()
+    
+    let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
     
     // initialize modelIsShown dictionary
     init() {
