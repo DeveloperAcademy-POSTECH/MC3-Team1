@@ -60,6 +60,7 @@ struct SecondOnView: View {
             
             Button {
                 selectedTab = 3
+                UserDefaults.standard.set(false, forKey: "isScanned")
             } label: {
                 Text("나중에 스캔하기")
                     .font(.system(size: 18))
