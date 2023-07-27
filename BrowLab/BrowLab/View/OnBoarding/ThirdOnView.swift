@@ -9,7 +9,8 @@ import SwiftUI
 import AVFoundation
 
 struct ThirdOnView: View {
-    @Binding var selectedTab: Int
+  //  @Binding var selectedTab: Int
+    @Binding var isFirstLaunching: Bool
 
     @State private var permissionRejected = false
     
@@ -43,7 +44,8 @@ struct ThirdOnView: View {
                 cameraAcess.checkCameraPermission { granted in
                     if granted{
                         print("Camera: 권한 허용")
-                        selectedTab = 4
+                        isFirstLaunching = false
+                       // selectedTab = 4
                         
                     }else{
                         permissionRejected = true
