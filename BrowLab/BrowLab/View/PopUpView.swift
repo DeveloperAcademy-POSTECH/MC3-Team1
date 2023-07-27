@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct PopUpView: View {
-    @Binding var isScanViewOpened:Bool
+    @Binding var isScanButtonTapped:Bool
     
     var body: some View {
         VStack{
             HStack{
                 Spacer()
                 Button {
-                    isScanViewOpened = false
+                    isScanButtonTapped = false
                 } label: {
                     Image("deleteIcon")
                 }

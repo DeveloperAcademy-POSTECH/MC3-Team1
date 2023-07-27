@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "arch_eyebrow_left.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
