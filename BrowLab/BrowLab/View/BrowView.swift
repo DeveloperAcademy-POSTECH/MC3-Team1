@@ -30,15 +30,73 @@ struct BrowView: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .opacity(0.00001)
                 // AR
-                ARViewContainer()
-                    .environmentObject(arVM)
-                    .frame(width: isFullScreen ? UIScreen.main.bounds.width : UIScreen.main.bounds.width, height: isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.width * 16.0 / 9.0)
+                VStack(spacing: 0) {
+                    Group {
+                        Spacer()
+                            .frame(height: 84.0 / 852.0 * UIScreen.main.bounds.height)
+                        ARViewContainer()
+                            .environmentObject(arVM)
+                        Spacer()
+                            .frame(height: 67.0 / 852.0 * UIScreen.main.bounds.height)
+                    }
+                    .ignoresSafeArea()
+                    .offset(y: -13.0 / 852.0 * UIScreen.main.bounds.height)
+                }
                 
-                // choice button
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
+                        .frame(height: 96.0 / 852.0 * UIScreen.main.bounds.height)
+                    ZStack {
+                        HStack{
+                            Spacer()
+                            // change-screen-ratio button
+                            Button {
+                                isFullScreen.toggle()
+                            } label: {
+                                Text("S")
+                            }
+                            .buttonStyle(.bordered)
+                            
+                            // face scan button
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 12)
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(.white)
+                                    .opacity(0.8)
+                                    .padding(.horizontal, 12)
+                                Button {
+                                    isScanButtonTapped = true
+                                } label: {
+                                    Image("faceScanIcon")
+                                }
+                            }
+                        }
+                        // see-guide button
+                        if chosenEyebrowName != nil {
+                            HStack {
+                                Spacer()
+                                ZStack {
+                                    NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic").environmentObject(arVM).environmentObject(personalizationModel)) {
+                                        ZStack
+                                        {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: 119, height: 42)
+                                                .foregroundColor(.white)
+                                                .opacity(0.8)
+                                                .padding(.horizontal, 12)
+                                            Text("가이드 보기")
+                                                .font(.title3)
+                                        }
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                    }
+                    Spacer()
+                    // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
+                        HStack(spacing: 12) {
                             ForEach(options, id: \.self) { option in
                                 Button(action: {
                                     optionButtonTapped(option)
@@ -53,9 +111,8 @@ struct BrowView: View {
                                                 .foregroundColor(.white)
                                             
                                         }
-                                        .padding(.horizontal, 60)
-                                        .padding(.vertical, 50)
-                                        .background(Color.blue)
+                                        .frame(width: 130, height: 125)
+                                        .background(.blue)
                                         .cornerRadius(8)
                                     }
                                     
@@ -64,61 +121,10 @@ struct BrowView: View {
                         }
                         .padding()
                     }
-                }
-                
-                if chosenEyebrowName != nil {
-                    VStack {
-                        Spacer()
-                            .frame(minHeight: 30, maxHeight: 84)
-                        HStack{
-                            Spacer()
-                            ZStack{
-                                NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic").environmentObject(arVM).environmentObject(personalizationModel)) {
-                                    ZStack
-                                    {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .frame(width: 119, height: 42)
-                                            .foregroundColor(.white)
-                                            .opacity(0.8)
-                                            .cornerRadius(12)
-                                            .padding(12)
-                                        Text("가이드 보기")
-                                            .font(.title3)
-                                    }
-                                }
-                            }
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                }
-                VStack {
                     Spacer()
-                    .frame(minHeight: 30, maxHeight: 84)
-                    HStack{
-                        Spacer()
-                        Button {
-                            isFullScreen.toggle()
-                        } label: {
-                            Text("Screen Style")
-                        }
-                        .buttonStyle(.bordered)
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 42, height: 42)
-                                .foregroundColor(.white)
-                                .opacity(0.8)
-                                .cornerRadius(12)
-                                .padding(12)
-                            Button {
-                                isScanButtonTapped = true
-                            } label: {
-                                Image("faceScanIcon")
-                            }
-                        }
-                    }
-                    Spacer()
+                        .frame(height: 83.0 / 852.0 * UIScreen.main.bounds.height)
                 }
+                .ignoresSafeArea()
                 
                 // customize modal view
                 if isScanButtonTapped {
