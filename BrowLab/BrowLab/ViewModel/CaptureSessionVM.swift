@@ -16,6 +16,10 @@ class CaptureSession: NSObject, ObservableObject {
     @Published var hairImage: CIImage?
     @Published var isFace = false
     @Published var takePhoto = false
+    // 화면에 VisionView 안의 cameraView가 등장할 때 이니셜라이징을 하도록 유도하는 변수
+    @Published var cameraViewExists = false
+    // 앱이 .active 상태였을 때 cameraView가 appear 상태였는지 기록하는 변수. BrowLappApp.swift에서 사용한다.
+    @Published var cameraViewExistedInLastActive = false
     
     var captureSession: AVCaptureSession?
     let photoOutput = AVCapturePhotoOutput()

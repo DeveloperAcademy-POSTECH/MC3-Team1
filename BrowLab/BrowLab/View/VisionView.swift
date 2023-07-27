@@ -27,10 +27,12 @@ struct VisionView: View {
     
     var body: some View {
         ZStack {
-            cameraView()
-                .ignoresSafeArea(.all)// 보여주기 위함으로 후에 삭제
-            ScanView1()
-            //            ScanView()
+            if captureSession.cameraViewExists {
+                cameraView()
+                    .ignoresSafeArea(.all)// 보여주기 위함으로 후에 삭제
+            }
+                ScanView1()
+                //            ScanView()
             
             
         }.onChange(of: faceDetector.landmarks) { landmarks in // 여기 변화 감지 부분 이니까 컬러 하면 좋을듯
@@ -82,6 +84,15 @@ struct VisionView: View {
                 //            print("\(convertedPoints[10]) : \(middlePoint)")
                 
             }
+        }
+        .onAppear {
+            captureSession.setup()
+            captureSession.start()
+            captureSession.cameraViewExists = true
+        }
+        .onDisappear {
+            captureSession.stop()
+            captureSession.cameraViewExists = false
         }
     }
     

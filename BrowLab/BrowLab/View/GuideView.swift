@@ -11,7 +11,6 @@ struct GuideView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
-    
     // 눈썹 번호
     var chosenEyebrowNum: Int
     var isFullScreen: Bool = false
@@ -32,8 +31,11 @@ struct GuideView: View {
                 Group {
                     Spacer()
                         .frame(height: isFullScreen ? 0.0 : 84.0 / 852.0 * UIScreen.main.bounds.height)
-                    ARViewContainer()
-                        .environmentObject(arVM)
+                    // ARViewContainer를 초기화할 때 카메라의 주도권을 가져오는 점에서 힌트를 얻어서 if문 안에 ARViewContainer()를 가뒀다.
+                    if arVM.guideARExists {
+                        ARViewContainer()
+                            .environmentObject(arVM)
+                    }
                     Spacer()
                         .frame(height: isFullScreen ? 0.0 : 67.0 / 852.0 * UIScreen.main.bounds.height)
                 }
@@ -108,6 +110,7 @@ struct GuideView: View {
         .navigationBarHidden(true)
         .onAppear {
             print("GuideView | onAppear-ing")
+            arVM.guideARExists = true
             arVM.arView.scene.anchors.removeAll()
             switch chosenEyebrowNum {
                 case 0:
@@ -123,6 +126,7 @@ struct GuideView: View {
             }
         }
         .onDisappear {
+            arVM.guideARExists = false
         }
     }
 }
