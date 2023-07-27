@@ -107,8 +107,8 @@ struct GuideView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
         .onAppear {
-            arVM.setup()
-            arVM.start()
+            print("GuideView | onAppear-ing")
+            arVM.arView.scene.anchors.removeAll()
             switch chosenEyebrowNum {
                 case 0:
                     arVM.addLinearGuide(personalizationModel: personalizationModel)
@@ -123,8 +123,6 @@ struct GuideView: View {
             }
         }
         .onDisappear {
-            arVM.arView.scene.anchors.removeAll()
-            arVM.stop()
         }
     }
 }

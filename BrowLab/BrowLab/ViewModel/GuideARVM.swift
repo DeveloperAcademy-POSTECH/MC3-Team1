@@ -1,5 +1,5 @@
 //
-//  ARVM.swift
+//  GuideARVM.swift
 //  BrowLab
 //
 //  Created by Wonil Lee on 2023/07/25.
@@ -8,144 +8,30 @@
 import ARKit
 import RealityKit
 
-class ARVM: ObservableObject {
+class GuideARVM: ObservableObject {
     @Published var arView = ARView(frame: .zero)
+    @Published var session = ARSession()
     @Published var configuration = ARFaceTrackingConfiguration()
     
-    func setup() {
-        arView.cameraMode = .ar
+    init() {
+        arView.session = session
+        // 가상의 마스크가 occlusion(가리기)을 하지 않게 설정
         arView.renderOptions.insert(.disableFaceMesh)
     }
     
     func start() {
-        arView.session.run(configuration)
+        print("GuideARVM | start")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.session.run(self.session.configuration ?? self.configuration)
+        }
     }
     
     func stop() {
-        arView.session.pause()
+        print("GuideARVM | stop")
+        session.pause()
     }
     
     //MARK: - arView에 scene을 추가하는 메서드
-    func addLinearEyebrow(personalizationModel: PersonalizationModel) {
-        let eyebrowNum = 0 // linear eyebrow
-        let faceAnchor = try! Eyebrow.loadLinearScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-
-    func addRoundEyebrow(personalizationModel: PersonalizationModel) {
-        let eyebrowNum = 1 // round eyebrow
-        let faceAnchor = try! Eyebrow.loadRoundScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-    
-    func addArchEyebrow(personalizationModel: PersonalizationModel) {
-        let eyebrowNum = 2 // arch eyebrow
-        let faceAnchor = try! Eyebrow.loadArchScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-    
-    func addAngularEyebrow(personalizationModel: PersonalizationModel) {
-        let eyebrowNum = 3
-        let faceAnchor = try! Eyebrow.loadAngularScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-    
     func addLinearGuide(personalizationModel: PersonalizationModel) {
         let guideNum = 0 // linear guide
         let faceAnchor = try! Guide.loadLinearScene()

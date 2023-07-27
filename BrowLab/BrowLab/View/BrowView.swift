@@ -140,11 +140,24 @@ struct BrowView: View {
             }
             .ignoresSafeArea()
             .onAppear {
-                arVM.setup()
-                arVM.start()
+                print("BrowView | onAppear-ing")
+                arVM.arView.scene.anchors.removeAll()
+                if let chosenEyebrowNum {
+                    switch chosenEyebrowNum {
+                        case 0:
+                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                        case 1:
+                            arVM.addRoundEyebrow(personalizationModel: personalizationModel)
+                        case 2:
+                            arVM.addArchEyebrow(personalizationModel: personalizationModel)
+                        case 3:
+                            arVM.addAngularEyebrow(personalizationModel: personalizationModel)
+                        default:
+                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                    }
+                }
             }
             .onDisappear {
-                arVM.stop()
             }
         }
     }
