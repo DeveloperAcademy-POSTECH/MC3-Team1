@@ -47,14 +47,6 @@ struct BrowView: View {
                     ZStack {
                         HStack{
                             Spacer()
-                            // change-screen-ratio button
-                            Button {
-                                isFullScreen.toggle()
-                            } label: {
-                                Text("S")
-                            }
-                            .buttonStyle(.bordered)
-                            
                             // face scan button
                             ZStack{
                                 RoundedRectangle(cornerRadius: 12)
@@ -80,7 +72,7 @@ struct BrowView: View {
                                             RoundedRectangle(cornerRadius: 10)
                                                 .frame(width: 119, height: 42)
                                                 .foregroundColor(.white)
-                                                .opacity(0.8)
+                                                .opacity(0.75)
                                                 .padding(.horizontal, 12)
                                             Text("가이드 보기")
                                                 .font(.title3)
@@ -92,6 +84,26 @@ struct BrowView: View {
                         }
                     }
                     Spacer()
+                    
+                    // change-screen-ratio button
+                    HStack {
+                        Spacer()
+                        Button {
+                            isFullScreen.toggle()
+                        } label: {
+                            Image(systemName: isFullScreen ? "arrow.down.right.and.arrow.up.left.circle.fill" : "arrow.up.left.and.arrow.down.right.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 42, height: 42)
+                                .foregroundColor(.white)
+                                .opacity(0.8)
+                        }
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                        .frame(height: 40.0 / 852.0 * UIScreen.main.bounds.height)
+                    
                     // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
