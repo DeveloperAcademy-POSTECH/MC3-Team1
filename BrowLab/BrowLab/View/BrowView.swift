@@ -33,11 +33,11 @@ struct BrowView: View {
                 VStack(spacing: 0) {
                     Group {
                         Spacer()
-                            .frame(height: 84.0 / 852.0 * UIScreen.main.bounds.height)
+                            .frame(height: isFullScreen ? 0.0 : 84.0 / 852.0 * UIScreen.main.bounds.height)
                         ARViewContainer()
                             .environmentObject(arVM)
                         Spacer()
-                            .frame(height: 67.0 / 852.0 * UIScreen.main.bounds.height)
+                            .frame(height: isFullScreen ? 0.0 : 67.0 / 852.0 * UIScreen.main.bounds.height)
                     }
                     .ignoresSafeArea()
                     .offset(y: -13.0 / 852.0 * UIScreen.main.bounds.height)
