@@ -30,36 +30,10 @@ class ARVM: ObservableObject {
         arView.session.pause()
     }
     
-    //MARK: - arView에 scene을 추가하는 메서드들
-    // 복붙 코드 여러 개로 관리하기 싫어서 고민을 해보았지만 rcproject의 scene과 하위의 앵커 등의 타입명이 모두 제각각이라 코드로 한번에 처리할 수가 없었다. 이게 최선이라는 결론에 이르렀다.
-    func addSampleEyebrow(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! SampleEyebrow.loadScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthDictionary["Basic"]! / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let position = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = position
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-    
+    //MARK: - arView에 scene을 추가하는 메서드
     func addLinearEyebrow(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! LinearEyebrow.loadScene()
+        let eyebrowNum = 0 // linear eyebrow
+        let faceAnchor = try! Eyebrow.loadLinearScene()
         
         var centerW: Float
         var centerH: Float
@@ -68,7 +42,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["일자 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -88,7 +62,8 @@ class ARVM: ObservableObject {
     }
 
     func addRoundEyebrow(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! RoundEyebrow.loadScene()
+        let eyebrowNum = 1 // round eyebrow
+        let faceAnchor = try! Eyebrow.loadRoundScene()
         
         var centerW: Float
         var centerH: Float
@@ -97,7 +72,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["둥근 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -117,7 +92,8 @@ class ARVM: ObservableObject {
     }
     
     func addArchEyebrow(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! ArchEyebrow.loadScene()
+        let eyebrowNum = 2 // arch eyebrow
+        let faceAnchor = try! Eyebrow.loadArchScene()
         
         var centerW: Float
         var centerH: Float
@@ -126,7 +102,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["아치형 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -146,7 +122,8 @@ class ARVM: ObservableObject {
     }
     
     func addAngularEyebrow(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! AngularEyebrow.loadScene()
+        let eyebrowNum = 3
+        let faceAnchor = try! Eyebrow.loadAngularScene()
         
         var centerW: Float
         var centerH: Float
@@ -155,7 +132,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["각진 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -174,34 +151,9 @@ class ARVM: ObservableObject {
         arView.scene.addAnchor(faceAnchor)
     }
     
-    func addSampleGuide(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! SampleGuide.loadScene()
-        
-        var centerW: Float
-        var centerH: Float
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
-            let size = boundingBox.extents
-            let originSize = boundingBox.extents
-            
-            let scaleX: Float = personalizationModel.eyebrowLengthDictionary["Basic"]! / originSize.x
-            
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            
-            centerW = size[0]/2 * scaleX
-            centerH = size[1]/2 * scaleX
-            
-            let position = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = position
-            
-        } else{
-            print("NOPE")
-        }
-        arView.scene.addAnchor(faceAnchor)
-    }
-    
     func addLinearGuide(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! LinearGuide.loadScene()
+        let guideNum = 0 // linear guide
+        let faceAnchor = try! Guide.loadLinearScene()
         
         var centerW: Float
         var centerH: Float
@@ -210,7 +162,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["일자 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[guideNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -230,7 +182,8 @@ class ARVM: ObservableObject {
     }
 
     func addRoundGuide(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! RoundGuide.loadScene()
+        let guideNum = 1 // round guide
+        let faceAnchor = try! Guide.loadRoundScene()
         
         var centerW: Float
         var centerH: Float
@@ -239,7 +192,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["둥근 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[guideNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -259,7 +212,8 @@ class ARVM: ObservableObject {
     }
     
     func addArchGuide(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! ArchGuide.loadScene()
+        let guideNum = 2 // arch guide
+        let faceAnchor = try! Guide.loadArchScene()
         
         var centerW: Float
         var centerH: Float
@@ -268,7 +222,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["아치형 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[guideNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -288,7 +242,8 @@ class ARVM: ObservableObject {
     }
     
     func addAngularGuide(personalizationModel: PersonalizationModel) {
-        let faceAnchor = try! AngularGuide.loadScene()
+        let guideNum = 3
+        let faceAnchor = try! Guide.loadAngularScene()
         
         var centerW: Float
         var centerH: Float
@@ -297,7 +252,7 @@ class ARVM: ObservableObject {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
-            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["각진 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            let scaleX: Float = personalizationModel.eyebrowLengthArray[guideNum] / originSize.x
             
             faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
             faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
@@ -315,5 +270,5 @@ class ARVM: ObservableObject {
         }
         arView.scene.addAnchor(faceAnchor)
     }
-    
+
 }

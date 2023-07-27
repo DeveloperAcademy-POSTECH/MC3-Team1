@@ -11,17 +11,14 @@ struct BrowView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
-    // 선택한 눈썹 없으면 nil, 있으면 눈썹 이름
+    // 선택한 눈썹 없으면 nil, 있으면 눈썹 번호
     // 눈썹이 띄워져 있는지 여부를 이 값의 nil/non-nil로 구분
-    @State var chosenEyebrowName: String?
+    @State var chosenEyebrowNum: Int?
     // 스캔 버튼 탭하면 true로 바뀐다
     @State var isScanButtonTapped : Bool = false
     @State var isFullScreen: Bool = false
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
-    
-    // EyebrowAssetData에 따로 빼놨어요
-    let options = EyebrowAssetData.eyebrowNameArray
     
     var body: some View {
         NavigationView {
@@ -30,18 +27,74 @@ struct BrowView: View {
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .opacity(0.00001)
                 // AR
-                ARViewContainer()
-                    .environmentObject(arVM)
-                    .frame(width: isFullScreen ? UIScreen.main.bounds.width : UIScreen.main.bounds.width, height: isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.width * 16.0 / 9.0)
+                VStack(spacing: 0) {
+                    Group {
+                        Spacer()
+                            .frame(height: isFullScreen ? 0.0 : 84.0 / 852.0 * UIScreen.main.bounds.height)
+                        ARViewContainer()
+                            .environmentObject(arVM)
+                        Spacer()
+                            .frame(height: isFullScreen ? 0.0 : 67.0 / 852.0 * UIScreen.main.bounds.height)
+                    }
+                }
                 
-                // choice button
-                VStack {
+                VStack(spacing: 0) {
                     Spacer()
+                        .frame(height: 96.0 / 852.0 * UIScreen.main.bounds.height)
+                    ZStack {
+                        HStack{
+                            Spacer()
+                            // change-screen-ratio button
+                            Button {
+                                isFullScreen.toggle()
+                            } label: {
+                                Text("S")
+                            }
+                            .buttonStyle(.bordered)
+                            
+                            // face scan button
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 12)
+                                    .frame(width: 42, height: 42)
+                                    .foregroundColor(.white)
+                                    .opacity(0.8)
+                                    .padding(.horizontal, 12)
+                                Button {
+                                    isScanButtonTapped = true
+                                } label: {
+                                    Image("faceScanIcon")
+                                }
+                            }
+                        }
+                        // see-guide button
+                        if chosenEyebrowNum != nil {
+                            HStack {
+                                Spacer()
+                                ZStack {
+                                    NavigationLink(destination: GuideView(chosenEyebrowNum: chosenEyebrowNum ?? 0, isFullScreen: isFullScreen).environmentObject(arVM).environmentObject(personalizationModel)) {
+                                        ZStack
+                                        {
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .frame(width: 119, height: 42)
+                                                .foregroundColor(.white)
+                                                .opacity(0.8)
+                                                .padding(.horizontal, 12)
+                                            Text("가이드 보기")
+                                                .font(.title3)
+                                        }
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                    }
+                    Spacer()
+                    // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
-                            ForEach(options, id: \.self) { option in
+                        HStack(spacing: 12) {
+                            ForEach(0..<EyebrowAssetData.nameArray.count, id: \.self) { iterator in
                                 Button(action: {
-                                    optionButtonTapped(option)
+                                    optionButtonTapped(iterator)
                                 }) {
                                     
                                     ZStack{
@@ -49,75 +102,21 @@ struct BrowView: View {
                                             Image(systemName: "heart")
                                                 .foregroundColor(.yellow)
                                             
-                                            Text(option)
+                                            Text(EyebrowAssetData.nameArray[iterator])
                                                 .foregroundColor(.white)
                                             
                                         }
-                                        .padding(.horizontal, 60)
-                                        .padding(.vertical, 50)
-                                        .background(Color.blue)
+                                        .frame(width: 130, height: 125)
+                                        .background(.blue)
                                         .cornerRadius(8)
                                     }
                                     
                                 }
                             }
                         }
-                        .padding()
-                    }
-                }
-                
-                if chosenEyebrowName != nil {
-                    VStack {
-                        Spacer()
-                            .frame(minHeight: 30, maxHeight: 84)
-                        HStack{
-                            Spacer()
-                            ZStack{
-                                NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic").environmentObject(arVM).environmentObject(personalizationModel)) {
-                                    ZStack
-                                    {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .frame(width: 119, height: 42)
-                                            .foregroundColor(.white)
-                                            .opacity(0.8)
-                                            .cornerRadius(12)
-                                            .padding(12)
-                                        Text("가이드 보기")
-                                            .font(.title3)
-                                    }
-                                }
-                            }
-                            Spacer()
-                        }
-                        Spacer()
-                    }
-                }
-                VStack {
-                    Spacer()
-                    .frame(minHeight: 30, maxHeight: 84)
-                    HStack{
-                        Spacer()
-                        Button {
-                            isFullScreen.toggle()
-                        } label: {
-                            Text("Screen Style")
-                        }
-                        .buttonStyle(.bordered)
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .frame(width: 42, height: 42)
-                                .foregroundColor(.white)
-                                .opacity(0.8)
-                                .cornerRadius(12)
-                                .padding(12)
-                            Button {
-                                isScanButtonTapped = true
-                            } label: {
-                                Image("faceScanIcon")
-                            }
-                        }
                     }
                     Spacer()
+                        .frame(height: 83.0 / 852.0 * UIScreen.main.bounds.height)
                 }
                 
                 // customize modal view
@@ -139,6 +138,7 @@ struct BrowView: View {
                 }
                 
             }
+            .ignoresSafeArea()
             .onAppear {
                 arVM.setup()
                 arVM.start()
@@ -147,47 +147,44 @@ struct BrowView: View {
                 arVM.stop()
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-        
     }
-    func optionButtonTapped(_ option: String) {
+    func optionButtonTapped(_ num: Int) {
         // when tapped button is OFF now
-        if option != (chosenEyebrowName ?? "") {
-            print("Selected option: \(option)")
-            chosenEyebrowName = option
+        if num != chosenEyebrowNum ?? -1 {
+            print("Selected option: \(EyebrowAssetData.nameArray[num])")
+            chosenEyebrowNum = num
             
             // remove all before adding
             arVM.arView.scene.anchors.removeAll()
             
             // add the option
-            switch option {
-                case "일자 눈썹":
+            switch num {
+                case 0:
                     arVM.addLinearEyebrow(personalizationModel: personalizationModel)
-                case "둥근 눈썹":
+                case 1:
                     arVM.addRoundEyebrow(personalizationModel: personalizationModel)
-                case "아치형 눈썹":
+                case 2:
                     arVM.addArchEyebrow(personalizationModel: personalizationModel)
-                case "각진 눈썹":
+                case 3:
                     arVM.addAngularEyebrow(personalizationModel: personalizationModel)
                 default:
-                    arVM.addSampleEyebrow(personalizationModel: personalizationModel)
+                    arVM.addLinearEyebrow(personalizationModel: personalizationModel)
             }
         }
         // when tapped button is already ON
         else {
             // remove all
-            chosenEyebrowName = nil
+            chosenEyebrowNum = nil
             arVM.arView.scene.anchors.removeAll()
             print("removed")
         }
     }
 }
-
-struct BrowView_Previews: PreviewProvider {
-    static var previews: some View {
-        BrowView()
-            .environmentObject(ARVM())
-            .environmentObject(PersonalizationModel())
-    }
-}
+//
+//struct BrowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BrowView()
+//            .environmentObject(ARVM())
+//            .environmentObject(PersonalizationModel())
+//    }
+//}
