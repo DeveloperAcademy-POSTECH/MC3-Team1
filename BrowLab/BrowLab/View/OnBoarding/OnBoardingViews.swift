@@ -15,6 +15,7 @@ struct OnBoardingViews: View {
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
     @Binding var isFirstLaunching: Bool
+    
     @State private var selectedTab: Int = 1
     
     
@@ -29,7 +30,7 @@ struct OnBoardingViews: View {
             ThirdOnView(isFirstLaunching: $isFirstLaunching)
                 .tag(3)
             
-            VisionView(isFirst: $isFirstLaunching)
+            VisionView(isFirst: $isFirstLaunching, isVisionOpened: $isFirstLaunching)
                 .environmentObject(faceDetector)
                 .environmentObject(captureSession)
                 .environmentObject(personalizationModel)

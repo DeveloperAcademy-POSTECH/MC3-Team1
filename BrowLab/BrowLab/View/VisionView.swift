@@ -10,6 +10,7 @@ import Vision
 
 struct VisionView: View {
     @Binding var isFirst: Bool
+    @Binding var isVisionOpened : Bool
     
     @EnvironmentObject var faceDetector: FaceDetector
     @EnvironmentObject var captureSession: CaptureSession
@@ -64,6 +65,7 @@ struct VisionView: View {
                     UserDefaults.standard.set(true, forKey: "isScanned")
                     DispatchQueue.main.asyncAfter(deadline: .now()+2){
                         isFirst = false
+                        isVisionOpened = false
                         captureSession.stop()
                     }
                     self.scanPoints = convertedPoints
