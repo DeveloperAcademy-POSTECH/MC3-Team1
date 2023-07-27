@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570F4B302A71FC42002C5C25 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F4B2F2A71FC42002C5C25 /* GuideView.swift */; };
+		570F4B332A71FDC4002C5C25 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F4B322A71FDC4002C5C25 /* Color+.swift */; };
 		572D374C2A70CCB100762FC4 /* ArchEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */; };
 		572D374D2A70CCB100762FC4 /* AngularEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */; };
 		572D374E2A70CCB100762FC4 /* LinearEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570F4B2F2A71FC42002C5C25 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		570F4B322A71FDC4002C5C25 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = ArchEyebrow.rcproject; sourceTree = "<group>"; };
 		572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = AngularEyebrow.rcproject; sourceTree = "<group>"; };
 		572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = LinearEyebrow.rcproject; sourceTree = "<group>"; };
@@ -128,6 +132,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570F4B312A71FDB8002C5C25 /* Extenxion */ = {
+			isa = PBXGroup;
+			children = (
+				570F4B322A71FDC4002C5C25 /* Color+.swift */,
+			);
+			path = Extenxion;
+			sourceTree = "<group>";
+		};
 		576CBBF82A6F6DB4007230F8 /* Reality Composer Project */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +197,7 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
+				570F4B312A71FDB8002C5C25 /* Extenxion */,
 				AE9EBCB82A709BCC009522AA /* Info.plist */,
 				AEA222352A6F607D003212D3 /* Global Function */,
 				57E766EB2A6F577200C3AED0 /* Model */,
@@ -265,6 +278,7 @@
 				576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */,
 				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
 				AE9EBCBA2A70C4B8009522AA /* PopUpView.swift */,
+				570F4B2F2A71FC42002C5C25 /* GuideView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -413,8 +427,10 @@
 				576CBBF72A6F6B63007230F8 /* ARViewContainer.swift in Sources */,
 				572D375A2A71547400762FC4 /* RoundGuide.rcproject in Sources */,
 				AEF455462A6E4B6F001855DB /* ThirdOnView.swift in Sources */,
+				570F4B302A71FC42002C5C25 /* GuideView.swift in Sources */,
 				57E41DC52A6F94F000D91463 /* GuideAssetData.swift in Sources */,
 				576CBBF52A6F6B2A007230F8 /* ARVM.swift in Sources */,
+				570F4B332A71FDC4002C5C25 /* Color+.swift in Sources */,
 				AEF4554E2A6E5124001855DB /* CameraPermission.swift in Sources */,
 				7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */,
 				572D37592A71547400762FC4 /* LinearGuide.rcproject in Sources */,

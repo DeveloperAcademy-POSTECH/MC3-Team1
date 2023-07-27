@@ -11,111 +11,137 @@ struct BrowView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
-    @State var modelIsShown = [String: Bool]()
-    @State var isScanViewOpened : Bool = false
+    // 선택한 눈썹 없으면 nil, 있으면 눈썹 이름
+    // 눈썹이 띄워져 있는지 여부를 이 값의 nil/non-nil로 구분
+    @State var chosenEyebrowName: String?
+    // 스캔 버튼 탭하면 true로 바뀐다
+    @State var isScanButtonTapped : Bool = false
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
-    
-    // initialize modelIsShown dictionary
-    init() {
-        var modelIsShown = [String: Bool]()
-        for o in EyebrowAssetData.eyebrowNameArray {
-            modelIsShown[o] = false
-        }
-        _modelIsShown = State(initialValue: modelIsShown)
-    }
     
     // EyebrowAssetData에 따로 빼놨어요
     let options = EyebrowAssetData.eyebrowNameArray
     
     var body: some View {
-        ZStack{
-            VStack{
-                HStack{
+        NavigationView {
+            ZStack {
+                // AR
+                ARViewContainer()
+                    .environmentObject(arVM)
+                
+                // choice button
+                VStack {
                     Spacer()
-                    ZStack{
-                        Button {
-                            isScanViewOpened = true
-                        } label: {
-                            Image("faceScanIcon")
-                            
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 20) {
+                            ForEach(options, id: \.self) { option in
+                                Button(action: {
+                                    optionButtonTapped(option)
+                                }) {
+                                    
+                                    ZStack{
+                                        VStack{
+                                            Image(systemName: "heart")
+                                                .foregroundColor(.yellow)
+                                            
+                                            Text(option)
+                                                .foregroundColor(.white)
+                                            
+                                        }
+                                        .padding(.horizontal, 60)
+                                        .padding(.vertical, 50)
+                                        .background(Color.blue)
+                                        .cornerRadius(8)
+                                    }
+                                    
+                                }
+                            }
                         }
-                        RoundedRectangle(cornerRadius: 10)
-                            .frame(width: 42, height: 42)
-                            .background(.gray)
-                            .opacity(0.1)
-                            .cornerRadius(10)
-                            .padding()
+                        .padding()
                     }
                 }
                 
-                ZStack {
-                    ARViewContainer()
-                        .environmentObject(arVM)
+                if chosenEyebrowName != nil {
                     VStack {
-                        Spacer()
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 20) {
-                                ForEach(options, id: \.self) { option in
-                                    Button(action: {
-                                        optionButtonTapped(option)
-                                    }) {
-                                        
-                                        ZStack{
-                                            VStack{
-                                                Image(systemName: "heart")
-                                                    .foregroundColor(.yellow)
-                                                
-                                                Text(option)
-                                                    .foregroundColor(.white)
-                                                
-                                            }
-                                            .padding(.horizontal, 60)
-                                            .padding(.vertical, 50)
-                                            .background(Color.blue)
-                                            .cornerRadius(8)
-                                        }
-                                        
+                        HStack{
+                            Spacer()
+                            ZStack{
+                                NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic").environmentObject(arVM).environmentObject(personalizationModel)) {
+                                    ZStack
+                                    {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: 119, height: 42)
+                                            .foregroundColor(.white)
+                                            .opacity(0.8)
+                                            .cornerRadius(12)
+                                            .padding(12)
+                                        Text("가이드 보기")
+                                            .font(.title3)
                                     }
                                 }
                             }
-                            .padding()
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
+                VStack {
+                    HStack{
+                        Spacer()
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(width: 42, height: 42)
+                                .foregroundColor(.white)
+                                .opacity(0.8)
+                                .cornerRadius(12)
+                                .padding(12)
+                            Button {
+                                isScanButtonTapped = true
+                            } label: {
+                                Image("faceScanIcon")
+                            }
+                        }
+                    }
+                    Spacer()
+                }
+                
+                // customize modal view
+                if isScanButtonTapped {
+                    GeometryReader { geometry in
+                        ZStack{
+                            Color(.gray)
+                                .ignoresSafeArea()
+                                .opacity(0.7)
+                            
+                            PopUpView(isScanButtonTapped: $isScanButtonTapped)
+                                .frame(width: 330, height: 430) // Set the size of the
+                                .background(.white)
+                                .cornerRadius(10)
+                                .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         }
                     }
                     
                 }
+                
             }
-            .background(isScanViewOpened ? Color.black.opacity(0.5) : .clear)
-            .transition(.opacity)
-            
-            // customize modal view
-            
-            if isScanViewOpened {
-                GeometryReader { geometry in
-                    ZStack{
-                        Color(.gray)
-                            .ignoresSafeArea()
-                            .opacity(0.7)
-                        
-                        PopUpView(isScanViewOpened: $isScanViewOpened)
-                            .frame(width: 330, height: 430) // Set the size of the
-                            .background(.white)
-                            .cornerRadius(10)
-                            .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
-                    }
-                }
-               
+            .onAppear {
+                arVM.setup()
+                arVM.start()
+            }
+            .onDisappear {
+                arVM.stop()
             }
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
         
     }
     func optionButtonTapped(_ option: String) {
         // when tapped button is OFF now
-        if !(modelIsShown[option]!) {
+        if option != (chosenEyebrowName ?? "") {
             print("Selected option: \(option)")
-            for o in EyebrowAssetData.eyebrowNameArray {
-                modelIsShown[o] = false
-            }
+            chosenEyebrowName = option
+            
             // remove all before adding
             arVM.arView.scene.anchors.removeAll()
             
@@ -132,14 +158,11 @@ struct BrowView: View {
                 default:
                     arVM.addSampleEyebrow(personalizationModel: personalizationModel)
             }
-            modelIsShown[option] = true
         }
         // when tapped button is already ON
         else {
             // remove all
-            for o in EyebrowAssetData.eyebrowNameArray {
-                modelIsShown[o] = false
-            }
+            chosenEyebrowName = nil
             arVM.arView.scene.anchors.removeAll()
             print("removed")
         }

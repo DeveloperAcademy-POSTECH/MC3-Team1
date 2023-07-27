@@ -174,4 +174,146 @@ class ARVM: ObservableObject {
         arView.scene.addAnchor(faceAnchor)
     }
     
+    func addSampleGuide(personalizationModel: PersonalizationModel) {
+        let faceAnchor = try! SampleGuide.loadScene()
+        
+        var centerW: Float
+        var centerH: Float
+        
+        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+            let size = boundingBox.extents
+            let originSize = boundingBox.extents
+            
+            let scaleX: Float = personalizationModel.eyebrowLengthDictionary["Basic"]! / originSize.x
+            
+            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
+            
+            centerW = size[0]/2 * scaleX
+            centerH = size[1]/2 * scaleX
+            
+            let position = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            faceAnchor.right?.position = position
+            
+        } else{
+            print("NOPE")
+        }
+        arView.scene.addAnchor(faceAnchor)
+    }
+    
+    func addLinearGuide(personalizationModel: PersonalizationModel) {
+        let faceAnchor = try! LinearGuide.loadScene()
+        
+        var centerW: Float
+        var centerH: Float
+        
+        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+            let size = boundingBox.extents
+            let originSize = boundingBox.extents
+            
+            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["일자 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            
+            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
+            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            
+            centerW = size[0]/2 * scaleX
+            centerH = size[1]/2 * scaleX
+            
+            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            faceAnchor.right?.position = rightPosition
+            faceAnchor.left?.position = leftPosition
+            
+        } else{
+            print("NOPE")
+        }
+        arView.scene.addAnchor(faceAnchor)
+    }
+
+    func addRoundGuide(personalizationModel: PersonalizationModel) {
+        let faceAnchor = try! RoundGuide.loadScene()
+        
+        var centerW: Float
+        var centerH: Float
+        
+        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+            let size = boundingBox.extents
+            let originSize = boundingBox.extents
+            
+            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["둥근 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            
+            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
+            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            
+            centerW = size[0]/2 * scaleX
+            centerH = size[1]/2 * scaleX
+            
+            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            faceAnchor.right?.position = rightPosition
+            faceAnchor.left?.position = leftPosition
+            
+        } else{
+            print("NOPE")
+        }
+        arView.scene.addAnchor(faceAnchor)
+    }
+    
+    func addArchGuide(personalizationModel: PersonalizationModel) {
+        let faceAnchor = try! ArchGuide.loadScene()
+        
+        var centerW: Float
+        var centerH: Float
+        
+        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+            let size = boundingBox.extents
+            let originSize = boundingBox.extents
+            
+            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["아치형 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            
+            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
+            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            
+            centerW = size[0]/2 * scaleX
+            centerH = size[1]/2 * scaleX
+            
+            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            faceAnchor.right?.position = rightPosition
+            faceAnchor.left?.position = leftPosition
+            
+        } else{
+            print("NOPE")
+        }
+        arView.scene.addAnchor(faceAnchor)
+    }
+    
+    func addAngularGuide(personalizationModel: PersonalizationModel) {
+        let faceAnchor = try! AngularGuide.loadScene()
+        
+        var centerW: Float
+        var centerH: Float
+        
+        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+            let size = boundingBox.extents
+            let originSize = boundingBox.extents
+            
+            let scaleX: Float = (personalizationModel.eyebrowLengthDictionary["각진 눈썹"] ?? personalizationModel.eyebrowLengthDictionary["Basic"]!) / originSize.x
+            
+            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
+            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            
+            centerW = size[0]/2 * scaleX
+            centerH = size[1]/2 * scaleX
+            
+            let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
+            faceAnchor.right?.position = rightPosition
+            faceAnchor.left?.position = leftPosition
+            
+        } else{
+            print("NOPE")
+        }
+        arView.scene.addAnchor(faceAnchor)
+    }
+    
 }
