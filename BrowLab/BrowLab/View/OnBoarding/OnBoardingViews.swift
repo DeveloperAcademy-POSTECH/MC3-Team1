@@ -26,7 +26,7 @@ struct OnBoardingViews: View {
             SecondOnView(selectedTab: $selectedTab)
                 .tag(2)
             
-            ThirdOnView(selectedTab: $selectedTab)
+            ThirdOnView(isFirstLaunching: $isFirstLaunching)
                 .tag(3)
             
             VisionView(isFirst: $isFirstLaunching)

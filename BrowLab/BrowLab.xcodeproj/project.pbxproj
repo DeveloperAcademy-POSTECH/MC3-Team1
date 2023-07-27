@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570F4B302A71FC42002C5C25 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F4B2F2A71FC42002C5C25 /* GuideView.swift */; };
+		570F4B332A71FDC4002C5C25 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570F4B322A71FDC4002C5C25 /* Color+.swift */; };
+		572D374C2A70CCB100762FC4 /* ArchEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */; };
+		572D374D2A70CCB100762FC4 /* AngularEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */; };
+		572D374E2A70CCB100762FC4 /* LinearEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */; };
+		572D374F2A70CCB100762FC4 /* RoundEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */; };
+		572D37572A71547400762FC4 /* AngularGuide.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37522A71547300762FC4 /* AngularGuide.rcproject */; };
+		572D37582A71547400762FC4 /* ArchGuide.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37532A71547400762FC4 /* ArchGuide.rcproject */; };
+		572D37592A71547400762FC4 /* LinearGuide.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37542A71547400762FC4 /* LinearGuide.rcproject */; };
+		572D375A2A71547400762FC4 /* RoundGuide.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37552A71547400762FC4 /* RoundGuide.rcproject */; };
+		572D375B2A71547400762FC4 /* SampleGuide.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 572D37562A71547400762FC4 /* SampleGuide.rcproject */; };
 		576CBBF52A6F6B2A007230F8 /* ARVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBF42A6F6B2A007230F8 /* ARVM.swift */; };
 		576CBBF72A6F6B63007230F8 /* ARViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */; };
 		576CBBFB2A6F70BC007230F8 /* SampleEyebrow.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */; };
@@ -22,6 +33,7 @@
 		7E60D4942A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */; };
 		7EF128A02A72373E00463C09 /* ChangeImageColorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF1289F2A72373E00463C09 /* ChangeImageColorVM.swift */; };
 		7EF128A22A7237CE00463C09 /* AVCaptureVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF128A12A7237CE00463C09 /* AVCaptureVM.swift */; };
+		AE9EBCBB2A70C4B8009522AA /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9EBCBA2A70C4B8009522AA /* PopUpView.swift */; };
 		AEA222372A6F6084003212D3 /* dist.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA222362A6F6084003212D3 /* dist.swift */; };
 		AEA222392A6F6520003212D3 /* BrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA222382A6F6520003212D3 /* BrowView.swift */; };
 		AEE3ECCB2A6F500C00DA0BFD /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */; };
@@ -54,6 +66,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570F4B2F2A71FC42002C5C25 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
+		570F4B322A71FDC4002C5C25 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = ArchEyebrow.rcproject; sourceTree = "<group>"; };
+		572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = AngularEyebrow.rcproject; sourceTree = "<group>"; };
+		572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = LinearEyebrow.rcproject; sourceTree = "<group>"; };
+		572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = RoundEyebrow.rcproject; sourceTree = "<group>"; };
+		572D37522A71547300762FC4 /* AngularGuide.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = AngularGuide.rcproject; sourceTree = "<group>"; };
+		572D37532A71547400762FC4 /* ArchGuide.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = ArchGuide.rcproject; sourceTree = "<group>"; };
+		572D37542A71547400762FC4 /* LinearGuide.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = LinearGuide.rcproject; sourceTree = "<group>"; };
+		572D37552A71547400762FC4 /* RoundGuide.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = RoundGuide.rcproject; sourceTree = "<group>"; };
+		572D37562A71547400762FC4 /* SampleGuide.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SampleGuide.rcproject; sourceTree = "<group>"; };
 		576CBBF42A6F6B2A007230F8 /* ARVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARVM.swift; sourceTree = "<group>"; };
 		576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewContainer.swift; sourceTree = "<group>"; };
 		576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = SampleEyebrow.rcproject; sourceTree = "<group>"; };
@@ -73,6 +96,7 @@
 		7EF1289F2A72373E00463C09 /* ChangeImageColorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageColorVM.swift; sourceTree = "<group>"; };
 		7EF128A12A7237CE00463C09 /* AVCaptureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVM.swift; sourceTree = "<group>"; };
 		AE9EBCB82A709BCC009522AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../Downloads/Info.plist; sourceTree = "<group>"; };
+		AE9EBCBA2A70C4B8009522AA /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		AEA222362A6F6084003212D3 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 		AEA222382A6F6520003212D3 /* BrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowView.swift; sourceTree = "<group>"; };
 		AEE3ECCA2A6F500C00DA0BFD /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
@@ -112,9 +136,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570F4B312A71FDB8002C5C25 /* Extenxion */ = {
+			isa = PBXGroup;
+			children = (
+				570F4B322A71FDC4002C5C25 /* Color+.swift */,
+			);
+			path = Extenxion;
+			sourceTree = "<group>";
+		};
 		576CBBF82A6F6DB4007230F8 /* Reality Composer Project */ = {
 			isa = PBXGroup;
 			children = (
+				572D37522A71547300762FC4 /* AngularGuide.rcproject */,
+				572D37532A71547400762FC4 /* ArchGuide.rcproject */,
+				572D37542A71547400762FC4 /* LinearGuide.rcproject */,
+				572D37552A71547400762FC4 /* RoundGuide.rcproject */,
+				572D37562A71547400762FC4 /* SampleGuide.rcproject */,
+				572D37492A70CCB100762FC4 /* AngularEyebrow.rcproject */,
+				572D37482A70CCB100762FC4 /* ArchEyebrow.rcproject */,
+				572D374A2A70CCB100762FC4 /* LinearEyebrow.rcproject */,
+				572D374B2A70CCB100762FC4 /* RoundEyebrow.rcproject */,
 				576CBBFA2A6F6E09007230F8 /* SampleEyebrow.rcproject */,
 			);
 			path = "Reality Composer Project";
@@ -160,6 +201,7 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
+				570F4B312A71FDB8002C5C25 /* Extenxion */,
 				AE9EBCB82A709BCC009522AA /* Info.plist */,
 				AEA222352A6F607D003212D3 /* Global Function */,
 				57E766EB2A6F577200C3AED0 /* Model */,
@@ -241,6 +283,8 @@
 				AEA222382A6F6520003212D3 /* BrowView.swift */,
 				576CBBF62A6F6B63007230F8 /* ARViewContainer.swift */,
 				B505CAD92A68B6FB009939A5 /* VisionView.swift */,
+				AE9EBCBA2A70C4B8009522AA /* PopUpView.swift */,
+				570F4B2F2A71FC42002C5C25 /* GuideView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,27 +419,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9EBCBB2A70C4B8009522AA /* PopUpView.swift in Sources */,
 				B505CADA2A68B6FB009939A5 /* VisionView.swift in Sources */,
+				572D374C2A70CCB100762FC4 /* ArchEyebrow.rcproject in Sources */,
+				572D37582A71547400762FC4 /* ArchGuide.rcproject in Sources */,
 				B505CAD52A678F88009939A5 /* CaptureSessionVM.swift in Sources */,
 				7EF128A02A72373E00463C09 /* ChangeImageColorVM.swift in Sources */,
+				572D37572A71547400762FC4 /* AngularGuide.rcproject in Sources */,
+				572D374F2A70CCB100762FC4 /* RoundEyebrow.rcproject in Sources */,
+				572D375B2A71547400762FC4 /* SampleGuide.rcproject in Sources */,
 				AEF455422A6E4383001855DB /* FirstOnView.swift in Sources */,
 				AEF455512A6E5BE6001855DB /* OnBoardingViews.swift in Sources */,
 				AEA222392A6F6520003212D3 /* BrowView.swift in Sources */,
 				576CBBF72A6F6B63007230F8 /* ARViewContainer.swift in Sources */,
+				572D375A2A71547400762FC4 /* RoundGuide.rcproject in Sources */,
 				AEF455462A6E4B6F001855DB /* ThirdOnView.swift in Sources */,
+				570F4B302A71FC42002C5C25 /* GuideView.swift in Sources */,
 				57E41DC52A6F94F000D91463 /* GuideAssetData.swift in Sources */,
 				576CBBF52A6F6B2A007230F8 /* ARVM.swift in Sources */,
 				7EF128A22A7237CE00463C09 /* AVCaptureVM.swift in Sources */,
+				570F4B332A71FDC4002C5C25 /* Color+.swift in Sources */,
 				AEF4554E2A6E5124001855DB /* CameraPermission.swift in Sources */,
 				7E60D4792A5FA571008D5035 /* ContentView.swift in Sources */,
+				572D37592A71547400762FC4 /* LinearGuide.rcproject in Sources */,
 				57E766F22A6F589B00C3AED0 /* PersonalizationModel.swift in Sources */,
 				B505CAD32A678F00009939A5 /* FaceDetectorVM.swift in Sources */,
 				AEA222372A6F6084003212D3 /* dist.swift in Sources */,
 				B505CAD82A67913D009939A5 /* CameraView.swift in Sources */,
+				572D374E2A70CCB100762FC4 /* LinearEyebrow.rcproject in Sources */,
 				57E766EF2A6F583400C3AED0 /* EyebrowAssetData.swift in Sources */,
 				7E60D4772A5FA571008D5035 /* BrowLabApp.swift in Sources */,
 				576CBBFB2A6F70BC007230F8 /* SampleEyebrow.rcproject in Sources */,
 				AEF455442A6E4958001855DB /* SecondOnView.swift in Sources */,
+				572D374D2A70CCB100762FC4 /* AngularEyebrow.rcproject in Sources */,
 				AEE3ECCB2A6F500C00DA0BFD /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +611,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = NM2S86642U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -570,7 +626,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
+				PRODUCT_BUNDLE_IDENTIFIER = hayun.team1.browLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -587,6 +643,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
 				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = NM2S86642U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -601,7 +658,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Ryu.facedetection;
+				PRODUCT_BUNDLE_IDENTIFIER = hayun.team1.browLab;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
