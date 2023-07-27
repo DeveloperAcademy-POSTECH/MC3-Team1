@@ -39,8 +39,6 @@ struct BrowView: View {
                         Spacer()
                             .frame(height: isFullScreen ? 0.0 : 67.0 / 852.0 * UIScreen.main.bounds.height)
                     }
-                    .ignoresSafeArea()
-                    .offset(y: -13.0 / 852.0 * UIScreen.main.bounds.height)
                 }
                 
                 VStack(spacing: 0) {
@@ -76,7 +74,7 @@ struct BrowView: View {
                             HStack {
                                 Spacer()
                                 ZStack {
-                                    NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic").environmentObject(arVM).environmentObject(personalizationModel)) {
+                                    NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic", isFullScreen: isFullScreen).environmentObject(arVM).environmentObject(personalizationModel)) {
                                         ZStack
                                         {
                                             RoundedRectangle(cornerRadius: 10)
@@ -119,12 +117,10 @@ struct BrowView: View {
                                 }
                             }
                         }
-                        .padding()
                     }
                     Spacer()
                         .frame(height: 83.0 / 852.0 * UIScreen.main.bounds.height)
                 }
-                .ignoresSafeArea()
                 
                 // customize modal view
                 if isScanButtonTapped {
@@ -145,6 +141,7 @@ struct BrowView: View {
                 }
                 
             }
+            .ignoresSafeArea()
             .onAppear {
                 arVM.setup()
                 arVM.start()
@@ -153,9 +150,6 @@ struct BrowView: View {
                 arVM.stop()
             }
         }
-        .navigationBarBackButtonHidden(true)
-        .navigationBarHidden(true)
-        
     }
     func optionButtonTapped(_ option: String) {
         // when tapped button is OFF now
@@ -189,11 +183,11 @@ struct BrowView: View {
         }
     }
 }
-
-struct BrowView_Previews: PreviewProvider {
-    static var previews: some View {
-        BrowView()
-            .environmentObject(ARVM())
-            .environmentObject(PersonalizationModel())
-    }
-}
+//
+//struct BrowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BrowView()
+//            .environmentObject(ARVM())
+//            .environmentObject(PersonalizationModel())
+//    }
+//}
