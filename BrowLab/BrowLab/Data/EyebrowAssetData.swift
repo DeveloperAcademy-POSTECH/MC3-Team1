@@ -13,15 +13,14 @@ enum EyebrowAssetData {
     // Need ratio of each assets to get personalized values
     
     // all names of eyebrow
-    static let eyebrowNameArray = ["일자 눈썹", "둥근 눈썹", "아치형 눈썹", "각진 눈썹"]
+    static let nameArray = ["일자 눈썹", "둥근 눈썹", "아치형 눈썹", "각진 눈썹"]
     
     // (v / h) ratio of each eyebrow asset
-    static let ratioDictionary: [String: Double] = [
-        "Basic": basicRatio,
-        "일자 눈썹": 0.2482,
-        "둥근 눈썹": 0.3382,
-        "아치형 눈썹": 0.3394,
-        "각진 눈썹": 0.3321
+    static let ratioArray: [Double] = [
+        0.2482, // 일자
+        0.3382, // 둥근
+        0.3394, // 아치형
+        0.3321  // 각진
     ]
     
     // ratio value to be used for invalid name

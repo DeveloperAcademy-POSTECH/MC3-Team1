@@ -7,22 +7,21 @@
 
 import Foundation
 
-// This enum is not in use
+// **** This enum is not in use
 enum GuideAssetData {
     // Need ratio of each assets to get personalized values
     
-    // all names of guide
-    static let guideNameArray = EyebrowAssetData.eyebrowNameArray
+    // all names of eyebrow
+    static let nameArray = EyebrowAssetData.nameArray
     
-    // (v / h) ratio of each guide asset
-    static let ratioDictionary: [String: Double] = [
-        "Basic": basicRatio,
-        "Option 1": 0.266,
-        "Option 2": 0.276,
-        "Option 3": 0.286,
-        "Option 4": 0.296
+    // (v / h) ratio of each eyebrow asset
+    static let ratioArray: [Double] = [
+        0.2482, // 일자
+        0.3382, // 둥근
+        0.3394, // 아치형
+        0.3321  // 각진
     ]
     
     // ratio value to be used for invalid name
-    static let basicRatio = 0.22
+    static let basicRatio = 0.266
 }

@@ -17,14 +17,14 @@ class PersonalizationModel: ObservableObject {
     
     static let basicHeadX: Float = 0.012
     static let basicMountainZ: Float = -0.057
-    static let basicEyebrowLengthDictionary: [String: Float] = ["Basic": 0.049]
+    static let basicEyebrowLengthArray: [Float] = [0.049, 0.047, 0.045, 0.043]
     
     // headX = (distance between two heads of eyebrows) / 2
     @Published var headX: Float = basicHeadX
     // mountainZ = -(height of mountains of eyebrows from the center of face anchor)
     @Published var mountainZ: Float = basicMountainZ
     // eyebrowLength = length of eyebrow
-    @Published var eyebrowLengthDictionary: [String: Float] = basicEyebrowLengthDictionary
+    @Published var eyebrowLengthArray: [Float] = basicEyebrowLengthArray
     
     func getPersonalizedValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
         /*
@@ -77,14 +77,14 @@ class PersonalizationModel: ObservableObject {
         
         mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base)
         
-        eyebrowLengthDictionary = [String: Float]()
+        eyebrowLengthArray = [Float]()
         
         let tempFactor1 = proportionalConstantOfEyebrowLength * (max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5) * (dist(p2, q) + (dist(a, b) + dist(c, d)) * 0.5)
         
-        for name in EyebrowAssetData.eyebrowNameArray {
-            let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * (EyebrowAssetData.ratioDictionary[name] ?? EyebrowAssetData.basicRatio)
+        for iterator in 0..<EyebrowAssetData.ratioArray.count {
+            let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * EyebrowAssetData.ratioArray[iterator]
             
-            eyebrowLengthDictionary[name] = Float(tempFactor1 / tempFactor2 / base)
+            eyebrowLengthArray.append(Float(tempFactor1 / tempFactor2 / base))
         }
     }
 

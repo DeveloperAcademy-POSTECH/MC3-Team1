@@ -12,8 +12,8 @@ struct GuideView: View {
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
     
-    // 눈썹 이름
-    var chosenEyebrowName: String
+    // 눈썹 번호
+    var chosenEyebrowNum: Int
     var isFullScreen: Bool = false
     
     // 스캔 버튼 탭하면 true로 바뀐다
@@ -21,9 +21,6 @@ struct GuideView: View {
     @Environment(\.presentationMode) var presentationMode
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
-    
-    // EyebrowAssetData에 따로 빼놨어요
-    let options = EyebrowAssetData.eyebrowNameArray
     
     var body: some View {
         ZStack {
@@ -104,7 +101,6 @@ struct GuideView: View {
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                     }
                 }
-                
             }
         }
         .ignoresSafeArea()
@@ -113,17 +109,17 @@ struct GuideView: View {
         .onAppear {
             arVM.setup()
             arVM.start()
-            switch chosenEyebrowName {
-                case "일자 눈썹":
+            switch chosenEyebrowNum {
+                case 0:
                     arVM.addLinearGuide(personalizationModel: personalizationModel)
-                case "둥근 눈썹":
+                case 1:
                     arVM.addRoundGuide(personalizationModel: personalizationModel)
-                case "아치형 눈썹":
+                case 2:
                     arVM.addArchGuide(personalizationModel: personalizationModel)
-                case "각진 눈썹":
+                case 3:
                     arVM.addAngularGuide(personalizationModel: personalizationModel)
                 default:
-                    arVM.addSampleGuide(personalizationModel: personalizationModel)
+                    arVM.addLinearGuide(personalizationModel: personalizationModel)
             }
         }
         .onDisappear {

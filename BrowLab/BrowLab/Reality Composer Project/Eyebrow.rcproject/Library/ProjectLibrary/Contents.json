@@ -1,0 +1,42 @@
+[
+  {
+    "libraryIdentifier" : "7da2ad17ddec514e6be1f47489cc4a37",
+    "format" : "image",
+    "displayName" : "linear_eyebrow_left.png"
+  },
+  {
+    "libraryIdentifier" : "98cba76350af6aa091b64aa1e04deebf",
+    "format" : "image",
+    "displayName" : "linear_eyebrow_right.png"
+  },
+  {
+    "libraryIdentifier" : "453ab09915a921199a13f3f7e406fa44",
+    "format" : "image",
+    "displayName" : "round_eyebrow_left.png"
+  },
+  {
+    "libraryIdentifier" : "f89e83dd9cd43e12d0559105d1705b77",
+    "format" : "image",
+    "displayName" : "round_eyebrow_right.png"
+  },
+  {
+    "libraryIdentifier" : "5e941548839ac7d74ff6a57e92c5b230",
+    "format" : "image",
+    "displayName" : "arch_eyebrow_right.png"
+  },
+  {
+    "libraryIdentifier" : "519df07946a273d5c0c2713b11ea8c83",
+    "format" : "image",
+    "displayName" : "arch_eyebrow_left.png"
+  },
+  {
+    "libraryIdentifier" : "ac72340469f7d03513d9af95d075e74d",
+    "format" : "image",
+    "displayName" : "angular_eyebrow_left.png"
+  },
+  {
+    "libraryIdentifier" : "7032808a3713dd5e1b26da86bb38a249",
+    "format" : "image",
+    "displayName" : "angular_eyebrow_right.png"
+  }
+]

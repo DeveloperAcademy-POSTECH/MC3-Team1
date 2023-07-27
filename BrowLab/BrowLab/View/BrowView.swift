@@ -11,17 +11,14 @@ struct BrowView: View {
     @EnvironmentObject var arVM: ARVM
     @EnvironmentObject var personalizationModel: PersonalizationModel
     
-    // 선택한 눈썹 없으면 nil, 있으면 눈썹 이름
+    // 선택한 눈썹 없으면 nil, 있으면 눈썹 번호
     // 눈썹이 띄워져 있는지 여부를 이 값의 nil/non-nil로 구분
-    @State var chosenEyebrowName: String?
+    @State var chosenEyebrowNum: Int?
     // 스캔 버튼 탭하면 true로 바뀐다
     @State var isScanButtonTapped : Bool = false
     @State var isFullScreen: Bool = false
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
-    
-    // EyebrowAssetData에 따로 빼놨어요
-    let options = EyebrowAssetData.eyebrowNameArray
     
     var body: some View {
         NavigationView {
@@ -70,11 +67,11 @@ struct BrowView: View {
                             }
                         }
                         // see-guide button
-                        if chosenEyebrowName != nil {
+                        if chosenEyebrowNum != nil {
                             HStack {
                                 Spacer()
                                 ZStack {
-                                    NavigationLink(destination: GuideView(chosenEyebrowName: chosenEyebrowName ?? "Basic", isFullScreen: isFullScreen).environmentObject(arVM).environmentObject(personalizationModel)) {
+                                    NavigationLink(destination: GuideView(chosenEyebrowNum: chosenEyebrowNum ?? 0, isFullScreen: isFullScreen).environmentObject(arVM).environmentObject(personalizationModel)) {
                                         ZStack
                                         {
                                             RoundedRectangle(cornerRadius: 10)
@@ -95,9 +92,9 @@ struct BrowView: View {
                     // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
-                            ForEach(options, id: \.self) { option in
+                            ForEach(0..<EyebrowAssetData.nameArray.count, id: \.self) { iterator in
                                 Button(action: {
-                                    optionButtonTapped(option)
+                                    optionButtonTapped(iterator)
                                 }) {
                                     
                                     ZStack{
@@ -105,7 +102,7 @@ struct BrowView: View {
                                             Image(systemName: "heart")
                                                 .foregroundColor(.yellow)
                                             
-                                            Text(option)
+                                            Text(EyebrowAssetData.nameArray[iterator])
                                                 .foregroundColor(.white)
                                             
                                         }
@@ -151,33 +148,33 @@ struct BrowView: View {
             }
         }
     }
-    func optionButtonTapped(_ option: String) {
+    func optionButtonTapped(_ num: Int) {
         // when tapped button is OFF now
-        if option != (chosenEyebrowName ?? "") {
-            print("Selected option: \(option)")
-            chosenEyebrowName = option
+        if num != chosenEyebrowNum ?? -1 {
+            print("Selected option: \(EyebrowAssetData.nameArray[num])")
+            chosenEyebrowNum = num
             
             // remove all before adding
             arVM.arView.scene.anchors.removeAll()
             
             // add the option
-            switch option {
-                case "일자 눈썹":
+            switch num {
+                case 0:
                     arVM.addLinearEyebrow(personalizationModel: personalizationModel)
-                case "둥근 눈썹":
+                case 1:
                     arVM.addRoundEyebrow(personalizationModel: personalizationModel)
-                case "아치형 눈썹":
+                case 2:
                     arVM.addArchEyebrow(personalizationModel: personalizationModel)
-                case "각진 눈썹":
+                case 3:
                     arVM.addAngularEyebrow(personalizationModel: personalizationModel)
                 default:
-                    arVM.addSampleEyebrow(personalizationModel: personalizationModel)
+                    arVM.addLinearEyebrow(personalizationModel: personalizationModel)
             }
         }
         // when tapped button is already ON
         else {
             // remove all
-            chosenEyebrowName = nil
+            chosenEyebrowNum = nil
             arVM.arView.scene.anchors.removeAll()
             print("removed")
         }
