@@ -8,7 +8,19 @@
 import SwiftUI
 
 struct PopUpView: View {
+    
     @Binding var isScanButtonTapped:Bool
+    
+    @State var isFirst = UserDefaults.standard.bool(forKey: "_isFirstLaunching")
+    @State var isScanned = UserDefaults.standard.bool(forKey: "isScanned")
+    
+    @State var isVisionOpened = false
+    
+    @EnvironmentObject var faceDetector: FaceDetector
+    @EnvironmentObject var captureSession: CaptureSession
+    @EnvironmentObject var personalizationModel: PersonalizationModel
+    
+    
     
     var body: some View {
         VStack{
@@ -30,7 +42,7 @@ struct PopUpView: View {
             
             Text("얼굴에 정확히 맞아떨어지는 눈썹 가이드를\n제공하기 위해 페이스 스캔을 진행해요.")
                 .font(.system(size: 14))
-                
+            
             
             Spacer()
                 .frame(height: 20)
@@ -40,9 +52,10 @@ struct PopUpView: View {
             
             Spacer()
                 .frame(height: 20)
-
+            
             Button {
-                let _ = print("hello")
+                
+                isVisionOpened = true
             } label: {
                 Text("페이스 스캔하기")
                     .font(.system(size: 18))
@@ -54,7 +67,21 @@ struct PopUpView: View {
             }
             
         }
+        .onChange(of: isVisionOpened) { (_) in
+            if isVisionOpened == false{
+                isScanButtonTapped = false
+            }
+        }
+        .sheet(isPresented: $isVisionOpened) {
+            
+            VisionView(isFirst: $isFirst, isVisionOpened: $isVisionOpened)
+                .environmentObject(faceDetector)
+                .environmentObject(captureSession)
+                .environmentObject(personalizationModel)
+        }
+        
     }
+    
 }
 
 //struct PopUpView_Previews: PreviewProvider {

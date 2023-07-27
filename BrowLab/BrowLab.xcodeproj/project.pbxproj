@@ -79,7 +79,7 @@
 		7E60D4932A5FA573008D5035 /* BrowLabUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowLabUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7EF1289F2A72373E00463C09 /* ChangeImageColorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeImageColorVM.swift; sourceTree = "<group>"; };
 		7EF128A12A7237CE00463C09 /* AVCaptureVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureVM.swift; sourceTree = "<group>"; };
-		AE9EBCB82A709BCC009522AA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../Downloads/Info.plist; sourceTree = "<group>"; };
+		AE457DCC2A727FD900A18623 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../../../../../../Downloads/Info.plist; sourceTree = "<group>"; };
 		AE9EBCBA2A70C4B8009522AA /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
 		AEA222362A6F6084003212D3 /* dist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dist.swift; sourceTree = "<group>"; };
 		AEA222382A6F6520003212D3 /* BrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowView.swift; sourceTree = "<group>"; };
@@ -177,8 +177,8 @@
 		7E60D4752A5FA571008D5035 /* BrowLab */ = {
 			isa = PBXGroup;
 			children = (
+				AE457DCC2A727FD900A18623 /* Info.plist */,
 				570F4B312A71FDB8002C5C25 /* Extenxion */,
-				AE9EBCB82A709BCC009522AA /* Info.plist */,
 				AEA222352A6F607D003212D3 /* Global Function */,
 				57E766EB2A6F577200C3AED0 /* Model */,
 				B505CAD62A679128009939A5 /* View */,
@@ -579,7 +579,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = SL6KBD5WZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
@@ -610,7 +610,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BrowLab/Preview Content\"";
-				DEVELOPMENT_TEAM = FLG797DV64;
+				DEVELOPMENT_TEAM = SL6KBD5WZW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowLab/Info.plist;
