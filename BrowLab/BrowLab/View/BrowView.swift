@@ -16,6 +16,7 @@ struct BrowView: View {
     @State var chosenEyebrowName: String?
     // 스캔 버튼 탭하면 true로 바뀐다
     @State var isScanButtonTapped : Bool = false
+    @State var isFullScreen: Bool = false
     
     let isScanned : Bool = UserDefaults.standard.bool(forKey: "isScanned")
     
@@ -25,9 +26,13 @@ struct BrowView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                Color(.white)
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .opacity(0.00001)
                 // AR
                 ARViewContainer()
                     .environmentObject(arVM)
+                    .frame(width: isFullScreen ? UIScreen.main.bounds.width : UIScreen.main.bounds.width, height: isFullScreen ? UIScreen.main.bounds.height : UIScreen.main.bounds.width * 16.0 / 9.0)
                 
                 // choice button
                 VStack {
@@ -63,6 +68,8 @@ struct BrowView: View {
                 
                 if chosenEyebrowName != nil {
                     VStack {
+                        Spacer()
+                            .frame(minHeight: 30, maxHeight: 84)
                         HStack{
                             Spacer()
                             ZStack{
@@ -86,8 +93,16 @@ struct BrowView: View {
                     }
                 }
                 VStack {
+                    Spacer()
+                    .frame(minHeight: 30, maxHeight: 84)
                     HStack{
                         Spacer()
+                        Button {
+                            isFullScreen.toggle()
+                        } label: {
+                            Text("Screen Style")
+                        }
+                        .buttonStyle(.bordered)
                         ZStack{
                             RoundedRectangle(cornerRadius: 10)
                                 .frame(width: 42, height: 42)
