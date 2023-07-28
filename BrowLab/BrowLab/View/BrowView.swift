@@ -31,8 +31,11 @@ struct BrowView: View {
                     Group {
                         Spacer()
                             .frame(height: isFullScreen ? 0.0 : 84.0 / 852.0 * UIScreen.main.bounds.height)
-                        ARViewContainer()
-                            .environmentObject(arVM)
+                        // ARViewContainer를 초기화할 때 카메라의 주도권을 가져오는 점에서 힌트를 얻어서 if문 안에 ARViewContainer()를 가뒀다.
+                        if arVM.eyebrowARExists {
+                            ARViewContainer()
+                                .environmentObject(arVM)
+                        }
                         Spacer()
                             .frame(height: isFullScreen ? 0.0 : 67.0 / 852.0 * UIScreen.main.bounds.height)
                     }
@@ -44,14 +47,6 @@ struct BrowView: View {
                     ZStack {
                         HStack{
                             Spacer()
-                            // change-screen-ratio button
-                            Button {
-                                isFullScreen.toggle()
-                            } label: {
-                                Text("S")
-                            }
-                            .buttonStyle(.bordered)
-                            
                             // face scan button
                             ZStack{
                                 RoundedRectangle(cornerRadius: 12)
@@ -77,7 +72,7 @@ struct BrowView: View {
                                             RoundedRectangle(cornerRadius: 10)
                                                 .frame(width: 119, height: 42)
                                                 .foregroundColor(.white)
-                                                .opacity(0.8)
+                                                .opacity(0.75)
                                                 .padding(.horizontal, 12)
                                             Text("가이드 보기")
                                                 .font(.title3)
@@ -89,6 +84,26 @@ struct BrowView: View {
                         }
                     }
                     Spacer()
+                    
+                    // change-screen-ratio button
+                    HStack {
+                        Spacer()
+                        Button {
+                            isFullScreen.toggle()
+                        } label: {
+                            Image(systemName: isFullScreen ? "arrow.down.right.and.arrow.up.left.circle.fill" : "arrow.up.left.and.arrow.down.right.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 42, height: 42)
+                                .foregroundColor(.white)
+                                .opacity(0.8)
+                        }
+                        Spacer()
+                    }
+                    
+                    Spacer()
+                        .frame(height: 40.0 / 852.0 * UIScreen.main.bounds.height)
+                    
                     // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
@@ -140,11 +155,26 @@ struct BrowView: View {
             }
             .ignoresSafeArea()
             .onAppear {
-                arVM.setup()
-                arVM.start()
+                print("BrowView | onAppear-ing")
+                arVM.eyebrowARExists = true
+                arVM.arView.scene.anchors.removeAll()
+                if let chosenEyebrowNum {
+                    switch chosenEyebrowNum {
+                        case 0:
+                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                        case 1:
+                            arVM.addRoundEyebrow(personalizationModel: personalizationModel)
+                        case 2:
+                            arVM.addArchEyebrow(personalizationModel: personalizationModel)
+                        case 3:
+                            arVM.addAngularEyebrow(personalizationModel: personalizationModel)
+                        default:
+                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                    }
+                }
             }
             .onDisappear {
-                arVM.stop()
+                arVM.eyebrowARExists = false
             }
         }
     }

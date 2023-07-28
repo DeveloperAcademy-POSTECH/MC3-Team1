@@ -12,14 +12,16 @@ class ARVM: ObservableObject {
     @Published var arView = ARView(frame: .zero)
     @Published var configuration = ARFaceTrackingConfiguration()
     
+    // 화면에 AR이 등장할 때 이니셜라이징을 하도록 유도하는 변수
+    @Published var eyebrowARExists = false
+    @Published var guideARExists = false
+    // 앱이 .active 상태였을 때 어떤 화면이 appear 상태였는지 기록하는 변수. BrowLappApp.swift에서 사용한다.
+    @Published var eyebrowARExistedInLastActive = false
+    @Published var guideARExistedInLastActive = false
+    
     func setup() {
-        if !ARFaceTrackingConfiguration.isSupported {
-            print("Your device does not support face anchors!")
-        } else {
-            configuration = ARFaceTrackingConfiguration()
-            // disable face occlusion
-            arView.renderOptions.insert(.disableFaceMesh)
-        }
+        arView.cameraMode = .ar
+        arView.renderOptions.insert(.disableFaceMesh)
     }
     
     func start() {
