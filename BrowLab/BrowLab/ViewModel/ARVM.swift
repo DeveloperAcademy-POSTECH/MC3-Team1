@@ -33,12 +33,18 @@ class ARVM: ObservableObject {
     }
     
     //MARK: - arView에 scene을 추가하는 메서드
+    
+    // loadScene 명칭만 다르게 해도 무관한데, 중복적으로 4개의 함수가 존재,,
+    // 먼저 한개만 다루기
+    
     func addLinearEyebrow(personalizationModel: PersonalizationModel) {
         let eyebrowNum = 0 // linear eyebrow
         let faceAnchor = try! Eyebrow.loadLinearScene()
         
         var centerW: Float
         var centerH: Float
+        
+        
         
         if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
             let size = boundingBox.extents
@@ -62,7 +68,7 @@ class ARVM: ObservableObject {
         }
         arView.scene.addAnchor(faceAnchor)
     }
-
+    
     func addRoundEyebrow(personalizationModel: PersonalizationModel) {
         let eyebrowNum = 1 // round eyebrow
         let faceAnchor = try! Eyebrow.loadRoundScene()
@@ -182,7 +188,7 @@ class ARVM: ObservableObject {
         }
         arView.scene.addAnchor(faceAnchor)
     }
-
+    
     func addRoundGuide(personalizationModel: PersonalizationModel) {
         let guideNum = 1 // round guide
         let faceAnchor = try! Guide.loadRoundScene()
@@ -272,5 +278,5 @@ class ARVM: ObservableObject {
         }
         arView.scene.addAnchor(faceAnchor)
     }
-
+    
 }
