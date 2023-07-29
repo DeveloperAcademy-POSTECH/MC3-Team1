@@ -118,13 +118,20 @@ struct BrowView: View {
                                                 .foregroundColor(.yellow)
                                             
                                             Text(EyebrowAssetData.nameArray[iterator])
-                                                .foregroundColor(.white)
+                                                .foregroundColor(.black)
                                             
                                         }
-                                        .frame(width: 130, height: 125)
-                                        .background(.blue)
-                                        .cornerRadius(8)
+                                        .frame(width: 140, height: 125)
+                                        .background(.white)
+                                        .cornerRadius(20)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .inset(by: 2)
+                                                .stroke(.blue, lineWidth: 4)
+                                        )
+                      
                                     }
+                                    .padding(.leading, 10)
                                     
                                 }
                             }
@@ -160,16 +167,16 @@ struct BrowView: View {
                 arVM.arView.scene.anchors.removeAll()
                 if let chosenEyebrowNum {
                     switch chosenEyebrowNum {
-                        case 0:
-                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
-                        case 1:
-                            arVM.addRoundEyebrow(personalizationModel: personalizationModel)
-                        case 2:
-                            arVM.addArchEyebrow(personalizationModel: personalizationModel)
-                        case 3:
-                            arVM.addAngularEyebrow(personalizationModel: personalizationModel)
-                        default:
-                            arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                    case 0:
+                        arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+                    case 1:
+                        arVM.addRoundEyebrow(personalizationModel: personalizationModel)
+                    case 2:
+                        arVM.addArchEyebrow(personalizationModel: personalizationModel)
+                    case 3:
+                        arVM.addAngularEyebrow(personalizationModel: personalizationModel)
+                    default:
+                        arVM.addLinearEyebrow(personalizationModel: personalizationModel)
                     }
                 }
             }
@@ -189,16 +196,16 @@ struct BrowView: View {
             
             // add the option
             switch num {
-                case 0:
-                    arVM.addLinearEyebrow(personalizationModel: personalizationModel)
-                case 1:
-                    arVM.addRoundEyebrow(personalizationModel: personalizationModel)
-                case 2:
-                    arVM.addArchEyebrow(personalizationModel: personalizationModel)
-                case 3:
-                    arVM.addAngularEyebrow(personalizationModel: personalizationModel)
-                default:
-                    arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+            case 0:
+                arVM.addLinearEyebrow(personalizationModel: personalizationModel)
+            case 1:
+                arVM.addRoundEyebrow(personalizationModel: personalizationModel)
+            case 2:
+                arVM.addArchEyebrow(personalizationModel: personalizationModel)
+            case 3:
+                arVM.addAngularEyebrow(personalizationModel: personalizationModel)
+            default:
+                arVM.addLinearEyebrow(personalizationModel: personalizationModel)
             }
         }
         // when tapped button is already ON
@@ -210,11 +217,3 @@ struct BrowView: View {
         }
     }
 }
-//
-//struct BrowView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BrowView()
-//            .environmentObject(ARVM())
-//            .environmentObject(PersonalizationModel())
-//    }
-//}
