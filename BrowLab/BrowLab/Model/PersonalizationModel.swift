@@ -78,10 +78,10 @@ class PersonalizationModel: ObservableObject {
         print("cucumber: \(cucumber)")
         let eyeFar = dist(l, r) / dist(e, f)
         print("eyeFar: \(eyeFar)")
-        
+        let uniformCucumber = max(min(1.10, cucumber), 1.00)
         headX = Float(proportionalConstantOfHeadX * dist(i, j) * 0.5 / base)
         
-        mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base) + Float(max(1.10 - cucumber, 0) * 0.05)
+        mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base) + Float((1.10 - uniformCucumber) * 0.05)
         
         eyebrowLengthArray = [Float]()
         
@@ -91,7 +91,7 @@ class PersonalizationModel: ObservableObject {
             let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * EyebrowAssetData.ratioArray[iterator]
             
             // cucumber 보정
-            eyebrowLengthArray.append(Float(tempFactor1 / tempFactor2 / base) - Float(max(1.10 - cucumber, 0)) * 0.07)
+            eyebrowLengthArray.append(Float(tempFactor1 / tempFactor2 / base) - Float(1.10 - uniformCucumber) * 0.07)
         }
     }
 
