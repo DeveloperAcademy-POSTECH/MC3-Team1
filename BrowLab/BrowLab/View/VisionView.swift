@@ -19,6 +19,7 @@ struct VisionView: View {
     @StateObject var convertedPoints = ConvertedPoints()
     @State var ScanCheck: Bool = false
     @State var smoothedPoints = [CGPoint]() // 이전 위치들의 평균값을 저장하는 배열
+    @State var readyTimePassed = false
     
     @State var allPoints = [CGPoint]()
     @State var toARSend = [CGPoint]()
@@ -26,13 +27,14 @@ struct VisionView: View {
     let middlePoint = CGPoint(x: UIScreen.main.bounds.width / 2 , y: UIScreen.main.bounds.height / 2.5)
     
     var body: some View {
+        
         ZStack {
             if captureSession.cameraViewExists {
                 cameraView()
                     .ignoresSafeArea(.all)// 보여주기 위함으로 후에 삭제
             }
-                ScanView1()
-                //            ScanView()
+            ScanView1()
+            //            ScanView()
             
             
         }.onChange(of: faceDetector.landmarks) { landmarks in // 여기 변화 감지 부분 이니까 컬러 하면 좋을듯
@@ -58,10 +60,10 @@ struct VisionView: View {
             
             //            print(convertedPoints)
             //            print("\(faceDetector.yaw) : \(faceDetector.pitch)")
-            DispatchQueue.main.asyncAfter(deadline: .now()+2) {
-                
+            if readyTimePassed {
                 if (faceDetector.yaw < 0.05 && faceDetector.pitch < 0.05) && (faceDetector.yaw > -0.05 && faceDetector.pitch > -0.05)
                     && (abs(convertedPoints[10].x - middlePoint.x) < 15) {
+                    readyTimePassed = false
                     ScanCheck = true
                     captureSession.isFace = true
                     UserDefaults.standard.set(true, forKey: "isScanned")
@@ -72,27 +74,30 @@ struct VisionView: View {
                     }
                     self.scanPoints = convertedPoints
                     
-                    personalizationModel.getPersonalizedValues(a: scanPoints[2], b: scanPoints[3], c: scanPoints[1], d: scanPoints[0], e: scanPoints[15], f: scanPoints[17], g: scanPoints[13], h: scanPoints[14], i: scanPoints[11], j: scanPoints[12], u: scanPoints[8], v: scanPoints[9], alpha: scanPoints[7], beta: scanPoints[6], gamma: scanPoints[5], delta: scanPoints[4])
+                    personalizationModel.getPersonalizedValues(a: scanPoints[2], b: scanPoints[3], c: scanPoints[1], d: scanPoints[0], e: scanPoints[15], f: scanPoints[17], g: scanPoints[13], h: scanPoints[14], i: scanPoints[11], j: scanPoints[12], u: scanPoints[8], v: scanPoints[9], alpha: scanPoints[7], beta: scanPoints[6], gamma: scanPoints[5], delta: scanPoints[4], s: scanPoints[16])
                     print("VisionView | personalizedValues | headX: \(personalizationModel.headX), mountainZ: \(personalizationModel.mountainZ), eyebrowLengthArray: \(personalizationModel.eyebrowLengthArray)")
                     
                     UserDefaults.standard.set(personalizationModel.headX, forKey: "personalizedHeadX")
                     UserDefaults.standard.set(personalizationModel.mountainZ, forKey: "personalizedMountainZ")
                     UserDefaults.standard.set(personalizationModel.eyebrowLengthArray, forKey: "personalizedLen")
                     
-                    
                 }
                 //            print("\(convertedPoints[10]) : \(middlePoint)")
-                
             }
+            
         }
         .onAppear {
             captureSession.setup()
             captureSession.start()
             captureSession.cameraViewExists = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                readyTimePassed = true
+            }
         }
         .onDisappear {
             captureSession.stop()
             captureSession.cameraViewExists = false
+            readyTimePassed = false
         }
     }
     

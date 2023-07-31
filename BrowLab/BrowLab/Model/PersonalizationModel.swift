@@ -11,9 +11,9 @@ class PersonalizationModel: ObservableObject {
     
     // proportional constants for each values (a.k.a. k1, k2, k3 each)
     // need to get k1, k2, k3 through real world experiment
-    private let proportionalConstantOfHeadX = 0.0516
-    private let proportionalConstantOfMountainZ = 0.1147
-    private let proportionalConstantOfEyebrowLength = 0.055
+    private let proportionalConstantOfHeadX = 0.4854
+    private let proportionalConstantOfMountainZ = 0.3848
+    private let proportionalConstantOfEyebrowLength = 0.8399
     
     static let basicHeadX: Float = 0.012
     static let basicMountainZ: Float = -0.057
@@ -26,7 +26,7 @@ class PersonalizationModel: ObservableObject {
     // eyebrowLength = length of eyebrow
     @Published var eyebrowLengthArray: [Float] = basicEyebrowLengthArray
     
-    func getPersonalizedValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint) {
+    func getPersonalizedValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint, s: CGPoint) {
         /*
          a: outer end of left eye
          b: inner end of left eye
@@ -44,6 +44,7 @@ class PersonalizationModel: ObservableObject {
          beta: down-middle of left eyebrow
          gamma: up-middle of right eyebrow
          delta: down-middle or right eyebrow
+         s: center of chin
          */
         
         func getMiddle(_ a: CGPoint, _ b: CGPoint) -> CGPoint {
@@ -51,7 +52,7 @@ class PersonalizationModel: ObservableObject {
         }
         
         func dist(_ a: CGPoint, _ b: CGPoint) -> Double {
-            sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) + (a.y - b.y))
+            sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y))
         }
         
         /*
@@ -71,11 +72,16 @@ class PersonalizationModel: ObservableObject {
         let m = getMiddle(u, v)
         
         // base is a value that is proportional to the size(1D) of face
-        let base = dist(l, p1) + dist(r, p1) + dist(m, p1)
+        // add five values to define base of face size
+        let base = dist(l, p1) + dist(r, p1) + dist(m, p1) + dist(q, s) + dist(e, f)
+        let cucumber = dist(q, m) / dist(e, f)
+        print("cucumber: \(cucumber)")
+        let eyeFar = dist(l, r) / dist(e, f)
+        print("eyeFar: \(eyeFar)")
         
         headX = Float(proportionalConstantOfHeadX * dist(i, j) * 0.5 / base)
         
-        mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base)
+        mountainZ = Float(-proportionalConstantOfMountainZ * (dist(p1, q) + (dist(a, b) + dist(c, d)) * 0.5) / base) + Float(max(1.10 - cucumber, 0) * 0.05)
         
         eyebrowLengthArray = [Float]()
         
@@ -84,7 +90,8 @@ class PersonalizationModel: ObservableObject {
         for iterator in 0..<EyebrowAssetData.ratioArray.count {
             let tempFactor2 = dist(p2, q) + max(dist(a, d) - dist(i, j), 0.000_000_001) * 0.5 * EyebrowAssetData.ratioArray[iterator]
             
-            eyebrowLengthArray.append(Float(tempFactor1 / tempFactor2 / base))
+            // cucumber 보정
+            eyebrowLengthArray.append(Float(tempFactor1 / tempFactor2 / base) - Float(max(1.10 - cucumber, 0)) * 0.07)
         }
     }
 
