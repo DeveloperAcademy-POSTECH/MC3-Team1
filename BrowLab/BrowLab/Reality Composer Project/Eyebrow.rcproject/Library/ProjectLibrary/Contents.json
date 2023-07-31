@@ -38,5 +38,165 @@
     "libraryIdentifier" : "7032808a3713dd5e1b26da86bb38a249",
     "format" : "image",
     "displayName" : "angular_eyebrow_right.png"
+  },
+  {
+    "libraryIdentifier" : "a9b5e6be9255228557274be757b947ba",
+    "format" : "image",
+    "displayName" : "straight_left_c1.png"
+  },
+  {
+    "libraryIdentifier" : "9f2d9ebcb0d6521f3e4ab92816230507",
+    "format" : "image",
+    "displayName" : "straight_left_c2.png"
+  },
+  {
+    "libraryIdentifier" : "d4a56161ef9896f54e97f2b1b29b888f",
+    "format" : "image",
+    "displayName" : "straight_left_c3.png"
+  },
+  {
+    "libraryIdentifier" : "fdbb658be7dad91a5bddfd2c4452f5ce",
+    "format" : "image",
+    "displayName" : "straight_left_c4.png"
+  },
+  {
+    "libraryIdentifier" : "cb30171f85633e5ca52705ec13ff61b8",
+    "format" : "image",
+    "displayName" : "straight_right_c1.png"
+  },
+  {
+    "libraryIdentifier" : "9f4931f069f0016416045ed643370114",
+    "format" : "image",
+    "displayName" : "straight_right_c2.png"
+  },
+  {
+    "libraryIdentifier" : "a9949e219f48248881d1942450eff764",
+    "format" : "image",
+    "displayName" : "straight_right_c3.png"
+  },
+  {
+    "libraryIdentifier" : "276061ac8c044c0be56d6257af32d50c",
+    "format" : "image",
+    "displayName" : "straight_right_c4.png"
+  },
+  {
+    "libraryIdentifier" : "8514ba356575d8447d99ac51f142cd0c",
+    "format" : "image",
+    "displayName" : "square_left_c1.png"
+  },
+  {
+    "libraryIdentifier" : "98a82426926585fbe7ac97c57de9e601",
+    "format" : "image",
+    "displayName" : "square_left_c2.png"
+  },
+  {
+    "libraryIdentifier" : "668d4996cc0fce41cb8943a05037270a",
+    "format" : "image",
+    "displayName" : "square_left_c3.png"
+  },
+  {
+    "libraryIdentifier" : "9f827779d58fafb07098fadcd7b6daa1",
+    "format" : "image",
+    "displayName" : "square_left_c4.png"
+  },
+  {
+    "libraryIdentifier" : "c21fd75f05cc47e596e95d85570a5615",
+    "format" : "image",
+    "displayName" : "square_right_c1.png"
+  },
+  {
+    "libraryIdentifier" : "a16ce9d9fce2b470b032c56817b60832",
+    "format" : "image",
+    "displayName" : "square_right_c2.png"
+  },
+  {
+    "libraryIdentifier" : "946e99bc039ebf5fb8810f8b8c81f8f4",
+    "format" : "image",
+    "displayName" : "square_right_c3.png"
+  },
+  {
+    "libraryIdentifier" : "84ec272ce171d7c75e0c49043c8edfb0",
+    "format" : "image",
+    "displayName" : "square_right_c4.png"
+  },
+  {
+    "libraryIdentifier" : "727945385aa34c8d6d17961e64f7a910",
+    "format" : "image",
+    "displayName" : "tilt_left_c1.png"
+  },
+  {
+    "libraryIdentifier" : "2ab1bab19b67581da4c9f4947cec5980",
+    "format" : "image",
+    "displayName" : "tilt_left_c2.png"
+  },
+  {
+    "libraryIdentifier" : "63f0bed4f474e3ae387a096ace9c8476",
+    "format" : "image",
+    "displayName" : "tilt_left_c3.png"
+  },
+  {
+    "libraryIdentifier" : "d01bc0e29d9bf99da3b606bd243053d5",
+    "format" : "image",
+    "displayName" : "tilt_left_c4.png"
+  },
+  {
+    "libraryIdentifier" : "c13b92e302e91d6f7c2eaf10c6be735e",
+    "format" : "image",
+    "displayName" : "tilt_right_c1.png"
+  },
+  {
+    "libraryIdentifier" : "d36166da99f38bf2bf612ce436351150",
+    "format" : "image",
+    "displayName" : "tilt_right_c2.png"
+  },
+  {
+    "libraryIdentifier" : "b0dd60c6ebed628c224d050158148617",
+    "format" : "image",
+    "displayName" : "tilt_right_c3.png"
+  },
+  {
+    "libraryIdentifier" : "e6d84ffdb9b62c802b61bfc5b98a0f9f",
+    "format" : "image",
+    "displayName" : "tilt_right_c4.png"
+  },
+  {
+    "libraryIdentifier" : "f908b1a5755d521a1ffb96b3e5d2e681",
+    "format" : "image",
+    "displayName" : "arch_left_c1.png"
+  },
+  {
+    "libraryIdentifier" : "d6d34cdfeace2804174a3d063ed2073b",
+    "format" : "image",
+    "displayName" : "arch_left_c2.png"
+  },
+  {
+    "libraryIdentifier" : "c024aac34889041c9af42416bd7da03b",
+    "format" : "image",
+    "displayName" : "arch_left_c3.png"
+  },
+  {
+    "libraryIdentifier" : "b7589c55bc385431acda925a69ec337f",
+    "format" : "image",
+    "displayName" : "arch_left_c4.png"
+  },
+  {
+    "libraryIdentifier" : "9313ca298be01195108d46b78be931bf",
+    "format" : "image",
+    "displayName" : "arch_right_c1.png"
+  },
+  {
+    "libraryIdentifier" : "55dbb6382b6446f2a9102c90b42a4c8c",
+    "format" : "image",
+    "displayName" : "arch_right_c2.png"
+  },
+  {
+    "libraryIdentifier" : "4bffd836cd441f1eef57ddd8cc310374",
+    "format" : "image",
+    "displayName" : "arch_right_c3.png"
+  },
+  {
+    "libraryIdentifier" : "315e7417c6d83eb0cf5beb56e0c7137b",
+    "format" : "image",
+    "displayName" : "arch_right_c4.png"
   }
 ]

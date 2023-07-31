@@ -69,6 +69,7 @@ struct VisionView: View {
                     UserDefaults.standard.set(true, forKey: "isScanned")
                     DispatchQueue.main.asyncAfter(deadline: .now()+2){
                         isFirst = false
+                        personalizationModel.getHairColor(color: captureSession.color)
                         isVisionOpened = false
                         captureSession.stop()
                     }

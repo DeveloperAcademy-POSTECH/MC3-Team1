@@ -45,23 +45,79 @@ class ARVM: ObservableObject {
         var centerH: Float
         
         
-        
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+        if let boundingBox = faceAnchor.right1?.visualBounds(relativeTo: nil) {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
             let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
+            let extraX: Float = 0.0
+
             
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            var modelNum = MatchingBrowColor(color: personalizationModel.hairColor)
+                        
+            if(modelNum == 1){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 2){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 3){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else{
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: scaleX)
+            }
             
             centerW = size[0]/2 * scaleX
             centerH = size[1]/2 * scaleX
             
             let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
             let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
+            
+            if(modelNum == 1){
+                faceAnchor.right1?.position = rightPosition
+                faceAnchor.left1?.position = leftPosition
+            }
+            else if(modelNum == 2){
+                faceAnchor.right2?.position = rightPosition
+                faceAnchor.left2?.position = leftPosition
+            }
+            else if(modelNum == 3){
+                faceAnchor.right3?.position = rightPosition
+                faceAnchor.left3?.position = leftPosition
+            }
+            else{
+                faceAnchor.right4?.position = rightPosition
+                faceAnchor.left4?.position = leftPosition
+            }
             
         } else{
             print("NOPE")
@@ -76,22 +132,78 @@ class ARVM: ObservableObject {
         var centerW: Float
         var centerH: Float
         
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+        if let boundingBox = faceAnchor.right1?.visualBounds(relativeTo: nil) {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
             let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
+            let extraX: Float = 0.0
+
             
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            var modelNum = MatchingBrowColor(color: personalizationModel.hairColor)
+                        
+            if(modelNum == 1){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 2){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 3){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else{
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: scaleX)
+            }
             
             centerW = size[0]/2 * scaleX
             centerH = size[1]/2 * scaleX
             
             let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
             let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
+            if(modelNum == 1){
+                faceAnchor.right1?.position = rightPosition
+                faceAnchor.left1?.position = leftPosition
+            }
+            else if(modelNum == 2){
+                faceAnchor.right2?.position = rightPosition
+                faceAnchor.left2?.position = leftPosition
+            }
+            else if(modelNum == 3){
+                faceAnchor.right3?.position = rightPosition
+                faceAnchor.left3?.position = leftPosition
+            }
+            else{
+                faceAnchor.right4?.position = rightPosition
+                faceAnchor.left4?.position = leftPosition
+            }
             
         } else{
             print("NOPE")
@@ -106,22 +218,79 @@ class ARVM: ObservableObject {
         var centerW: Float
         var centerH: Float
         
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+        if let boundingBox = faceAnchor.right1?.visualBounds(relativeTo: nil) {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
             let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
             
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            let extraX: Float = 0.0
+
+            
+            var modelNum = MatchingBrowColor(color: personalizationModel.hairColor)
+                        
+            if(modelNum == 1){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 2){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 3){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else{
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: scaleX)
+            }
             
             centerW = size[0]/2 * scaleX
             centerH = size[1]/2 * scaleX
             
             let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
             let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
+            if(modelNum == 1){
+                faceAnchor.right1?.position = rightPosition
+                faceAnchor.left1?.position = leftPosition
+            }
+            else if(modelNum == 2){
+                faceAnchor.right2?.position = rightPosition
+                faceAnchor.left2?.position = leftPosition
+            }
+            else if(modelNum == 3){
+                faceAnchor.right3?.position = rightPosition
+                faceAnchor.left3?.position = leftPosition
+            }
+            else{
+                faceAnchor.right4?.position = rightPosition
+                faceAnchor.left4?.position = leftPosition
+            }
             
         } else{
             print("NOPE")
@@ -136,22 +305,78 @@ class ARVM: ObservableObject {
         var centerW: Float
         var centerH: Float
         
-        if let boundingBox = faceAnchor.right?.visualBounds(relativeTo: nil) {
+        if let boundingBox = faceAnchor.right1?.visualBounds(relativeTo: nil) {
             let size = boundingBox.extents
             let originSize = boundingBox.extents
             
             let scaleX: Float = personalizationModel.eyebrowLengthArray[eyebrowNum] / originSize.x
+            let extraX: Float = 0.0
+
             
-            faceAnchor.right?.scale = SIMD3<Float>(repeating: scaleX)
-            faceAnchor.left?.scale = SIMD3<Float>(repeating: scaleX)
+            var modelNum = MatchingBrowColor(color: personalizationModel.hairColor)
+                        
+            if(modelNum == 1){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 2){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else if(modelNum == 3){
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: extraX)
+            }
+            else{
+                faceAnchor.right1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left1?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left2?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.left3?.scale = SIMD3<Float>(repeating: extraX)
+                faceAnchor.right4?.scale = SIMD3<Float>(repeating: scaleX)
+                faceAnchor.left4?.scale = SIMD3<Float>(repeating: scaleX)
+            }
             
             centerW = size[0]/2 * scaleX
             centerH = size[1]/2 * scaleX
             
             let rightPosition = SIMD3<Float>(x: Float(centerW+personalizationModel.headX), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
             let leftPosition = SIMD3<Float>(x: Float(-(centerW+personalizationModel.headX)), y: 0.045, z: Float(centerH+personalizationModel.mountainZ))
-            faceAnchor.right?.position = rightPosition
-            faceAnchor.left?.position = leftPosition
+            if(modelNum == 1){
+                faceAnchor.right1?.position = rightPosition
+                faceAnchor.left1?.position = leftPosition
+            }
+            else if(modelNum == 2){
+                faceAnchor.right2?.position = rightPosition
+                faceAnchor.left2?.position = leftPosition
+            }
+            else if(modelNum == 3){
+                faceAnchor.right3?.position = rightPosition
+                faceAnchor.left3?.position = leftPosition
+            }
+            else{
+                faceAnchor.right4?.position = rightPosition
+                faceAnchor.left4?.position = leftPosition
+            }
             
         } else{
             print("NOPE")
@@ -159,6 +384,8 @@ class ARVM: ObservableObject {
         arView.scene.addAnchor(faceAnchor)
     }
     
+    
+    //가이드 에셋으로 적용하기
     func addLinearGuide(personalizationModel: PersonalizationModel) {
         let guideNum = 0 // linear guide
         let faceAnchor = try! Guide.loadLinearScene()

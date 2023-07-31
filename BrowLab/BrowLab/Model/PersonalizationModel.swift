@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class PersonalizationModel: ObservableObject {
     
@@ -25,6 +26,12 @@ class PersonalizationModel: ObservableObject {
     @Published var mountainZ: Float = basicMountainZ
     // eyebrowLength = length of eyebrow
     @Published var eyebrowLengthArray: [Float] = basicEyebrowLengthArray
+    // Average of hair color
+    @Published var hairColor: UIColor = .brown
+    
+    func getHairColor(color: UIColor) {
+        hairColor = color
+    }
     
     func getPersonalizedValues(a: CGPoint, b: CGPoint, c: CGPoint, d: CGPoint, e: CGPoint, f: CGPoint, g: CGPoint, h: CGPoint, i: CGPoint, j: CGPoint, u: CGPoint, v: CGPoint, alpha: CGPoint, beta: CGPoint, gamma: CGPoint, delta: CGPoint, s: CGPoint) {
         /*
