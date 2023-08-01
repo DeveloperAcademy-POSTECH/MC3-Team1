@@ -38,5 +38,60 @@
     "libraryIdentifier" : "7032808a3713dd5e1b26da86bb38a249",
     "format" : "image",
     "displayName" : "angular_eyebrow_right.png"
+  },
+  {
+    "libraryIdentifier" : "59c989920307b4884b8e93e99789f05c",
+    "format" : "image",
+    "displayName" : "straight_guide_yellow.png"
+  },
+  {
+    "libraryIdentifier" : "cbb67283051cb4457dc84c58782d8e2d",
+    "format" : "image",
+    "displayName" : "straight_guide_blue.png"
+  },
+  {
+    "libraryIdentifier" : "54f91b1ad1c5de9496b36bd65e7ca342",
+    "format" : "image",
+    "displayName" : "guide_blue_dots.png"
+  },
+  {
+    "libraryIdentifier" : "918f064e0d87e3bf9d2020d6346b58e3",
+    "format" : "image",
+    "displayName" : "guide_blue_trans.png"
+  },
+  {
+    "libraryIdentifier" : "bce1f48348e500a6ebf0eef2d88384e3",
+    "format" : "image",
+    "displayName" : "guide_straight_left.png"
+  },
+  {
+    "libraryIdentifier" : "d2893068231c7da92e3795c37537215d",
+    "format" : "image",
+    "displayName" : "guide_arch_left.png"
+  },
+  {
+    "libraryIdentifier" : "e0687713044c63f19267930c109621ff",
+    "format" : "image",
+    "displayName" : "guide_arch_right.png"
+  },
+  {
+    "libraryIdentifier" : "5fce9ee62d6d419150d5fc929b76e9c6",
+    "format" : "image",
+    "displayName" : "guide_tilt_left.png"
+  },
+  {
+    "libraryIdentifier" : "0623e6ae4687fb2d9100f53028c40946",
+    "format" : "image",
+    "displayName" : "guide_tilt_right.png"
+  },
+  {
+    "libraryIdentifier" : "dd78aaf3d514bc8b07d5c00ea9e78337",
+    "format" : "image",
+    "displayName" : "guide_square_left.png"
+  },
+  {
+    "libraryIdentifier" : "6d5370b59d014beebf4eb22b50f50622",
+    "format" : "image",
+    "displayName" : "guide_square_right.png"
   }
 ]
