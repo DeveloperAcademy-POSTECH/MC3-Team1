@@ -114,11 +114,17 @@ struct BrowView: View {
                                     
                                     ZStack{
                                         VStack{
-                                            Image(systemName: "heart")
-                                                .foregroundColor(.yellow)
+                                            Image(EyebrowAssetData.rightImageNameArray[iterator])
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 100, height: 80)
                                             
                                             Text(EyebrowAssetData.nameArray[iterator])
                                                 .foregroundColor(.black)
+                                                .font(.callout)
+                                            Spacer()
+                                                .frame(height: 15)
+                                        
                                             
                                         }
                                         .frame(width: 140, height: 125)
