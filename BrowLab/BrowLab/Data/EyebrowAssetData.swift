@@ -13,14 +13,16 @@ enum EyebrowAssetData {
     // Need ratio of each assets to get personalized values
     
     // all names of eyebrow
-    static let nameArray = ["일자 눈썹", "둥근 눈썹", "아치형 눈썹", "각진 눈썹"]
+    static let nameArray = ["일자 눈썹", "둥근 눈썹", "틸트 눈썹", "각진 눈썹"]
+    
+    static let rightImageNameArray = ["straight_right", "arch_right", "tilt_right", "square_right"]
     
     // (v / h) ratio of each eyebrow asset
     static let ratioArray: [Double] = [
-        0.2482, // 일자
-        0.3382, // 둥근
-        0.3394, // 아치형
-        0.3321  // 각진
+        0.2141, // 일자
+        0.2659, // 둥근
+        0.2447, // 아치형
+        0.44  // 각진
     ]
     
     // ratio value to be used for invalid name
