@@ -135,6 +135,23 @@ struct BrowView: View {
                                                 .inset(by: 2)
                                                 .stroke(.blue, lineWidth: 4)
                                         )
+                                        if chosenEyebrowNum ?? -1 == iterator {
+                                            VStack {
+                                                Spacer().frame(height: 12)
+                                                HStack {
+                                                    Spacer()
+                                                    Image(systemName: "checkmark.circle.fill")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 24, height: 24)
+                                                        .foregroundColor(.complementary)
+                                                    Spacer().frame(width: 12)
+                                                }
+                                                Spacer()
+                                            }
+                                            .frame(width: 140, height: 125)
+                                            .allowsHitTesting(false)
+                                        }
                       
                                     }
                                     .padding(.leading, 10)
