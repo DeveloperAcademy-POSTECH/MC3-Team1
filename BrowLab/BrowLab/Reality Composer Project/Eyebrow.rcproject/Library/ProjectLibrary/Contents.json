@@ -198,5 +198,10 @@
     "libraryIdentifier" : "315e7417c6d83eb0cf5beb56e0c7137b",
     "format" : "image",
     "displayName" : "arch_right_c4.png"
+  },
+  {
+    "libraryIdentifier" : "59c989920307b4884b8e93e99789f05c",
+    "format" : "image",
+    "displayName" : "straight_guide_yellow.png"
   }
 ]
