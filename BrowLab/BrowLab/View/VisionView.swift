@@ -201,7 +201,7 @@ struct VisionView: View {
                     Spacer()
                 }
                 
-                Circle().fill(Color.green).frame(width: 10, height: 10).position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2.5)
+//                Circle().fill(Color.green).frame(width: 10, height: 10).position(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2.5)
                 
                 Image("frame")
                     .scaledToFit()

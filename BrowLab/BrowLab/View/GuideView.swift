@@ -43,7 +43,7 @@ struct GuideView: View {
             
             VStack(spacing: 0) {
                 Spacer()
-                    .frame(height: 96.0 / 852.0 * UIScreen.main.bounds.height)
+                    .frame(height: isFullScreen ? 67.0 / 852.0 * UIScreen.main.bounds.height : 96.0 / 852.0 * UIScreen.main.bounds.height)
 
                 HStack(spacing: 0){
                     Spacer()
@@ -51,9 +51,9 @@ struct GuideView: View {
                     // go-back-to-filter button
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
-                            .frame(width: 82, height: 42)
+                            .frame(width: 82, height: 47)
                             .foregroundColor(.white)
-                            .opacity(0.8)
+                            .opacity(0.75)
                         Button {
                             presentationMode.wrappedValue.dismiss()
                         } label: {
@@ -72,9 +72,9 @@ struct GuideView: View {
                     // face scan button
                     ZStack{
                         RoundedRectangle(cornerRadius: 12)
-                            .frame(width: 42, height: 42)
+                            .frame(width: 47, height: 47)
                             .foregroundColor(.white)
-                            .opacity(0.8)
+                            .opacity(0.75)
                         Button {
                             isScanButtonTapped = true
                         } label: {
@@ -94,12 +94,12 @@ struct GuideView: View {
                     ZStack{
                         Color(.gray)
                             .ignoresSafeArea()
-                            .opacity(0.7)
+                            .opacity(0.75)
                         
                         PopUpView(isScanButtonTapped: $isScanButtonTapped)
-                            .frame(width: 330, height: 430) // Set the size of the
+                            .frame(width: 350, height: 460) // Set the size of the
                             .background(.white)
-                            .cornerRadius(10)
+                            .cornerRadius(12)
                             .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                     }
                 }

@@ -31,17 +31,23 @@ struct PopUpView: View {
                 } label: {
                     Image("deleteIcon")
                 }
-                .padding(.trailing)
+                .padding(.top, 16)
+                .padding(.trailing, 16)
+               
             }
             Text("페이스 스캔")
                 .font(.system(size: 28))
                 .bold()
+               
             
             Spacer()
                 .frame(height: 15)
             
             Text("얼굴에 정확히 맞아떨어지는 눈썹 가이드를\n제공하기 위해 페이스 스캔을 진행해요.")
                 .font(.system(size: 14))
+                .multilineTextAlignment(.center)
+                .lineSpacing(5)
+                .foregroundColor(Color(hex: 0x585858))
             
             
             Spacer()
@@ -51,7 +57,7 @@ struct PopUpView: View {
             Image("faceScan")
             
             Spacer()
-                .frame(height: 20)
+               
             
             Button {
                 
@@ -65,6 +71,8 @@ struct PopUpView: View {
                     .foregroundColor(.white)
                     .cornerRadius(12)
             }
+            Spacer()
+                .frame(height: 30)
             
         }
         .onChange(of: isVisionOpened) { (_) in
