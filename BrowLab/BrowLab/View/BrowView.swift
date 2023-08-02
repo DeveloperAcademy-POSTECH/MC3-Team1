@@ -43,16 +43,18 @@ struct BrowView: View {
                 
                 VStack(spacing: 0) {
                     Spacer()
-                        .frame(height: 96.0 / 852.0 * UIScreen.main.bounds.height)
+                        .frame(height: isFullScreen ? 67.0 / 852.0 * UIScreen.main.bounds.height : 96.0 / 852.0 * UIScreen.main.bounds.height)
+                    
+
                     ZStack {
                         HStack{
                             Spacer()
                             // face scan button
                             ZStack{
                                 RoundedRectangle(cornerRadius: 12)
-                                    .frame(width: 42, height: 42)
+                                    .frame(width: 47, height: 47)
                                     .foregroundColor(.white)
-                                    .opacity(0.8)
+                                    .opacity(0.75)
                                     .padding(.horizontal, 12)
                                 Button {
                                     isScanButtonTapped = true
@@ -69,8 +71,8 @@ struct BrowView: View {
                                     NavigationLink(destination: GuideView(chosenEyebrowNum: chosenEyebrowNum ?? 0, isFullScreen: isFullScreen).environmentObject(arVM).environmentObject(personalizationModel)) {
                                         ZStack
                                         {
-                                            RoundedRectangle(cornerRadius: 10)
-                                                .frame(width: 119, height: 42)
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .frame(width: 121, height: 47)
                                                 .foregroundColor(.white)
                                                 .opacity(0.75)
                                                 .padding(.horizontal, 12)
@@ -96,7 +98,7 @@ struct BrowView: View {
                                 .scaledToFit()
                                 .frame(width: 42, height: 42)
                                 .foregroundColor(.white)
-                                .opacity(0.8)
+                                .opacity(0.75)
                         }
                         Spacer()
                     }
@@ -106,7 +108,9 @@ struct BrowView: View {
                     
                     // choice buttons
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: 20) {
+                            Spacer()
+                                .frame(width: 8)
                             ForEach(0..<EyebrowAssetData.nameArray.count, id: \.self) { iterator in
                                 Button(action: {
                                     optionButtonTapped(iterator)
@@ -114,54 +118,61 @@ struct BrowView: View {
                                     
                                     ZStack{
                                         VStack{
+                                            
+                                            Spacer()
+                                                .frame(height: 36)
+                                            
                                             Image(EyebrowAssetData.rightImageNameArray[iterator])
                                                 .resizable()
+                                                .frame(width: 110, height: 30)
                                                 .scaledToFit()
-                                                .frame(width: 100, height: 80)
+                                                
+                                            
+                                            Spacer()
                                             
                                             Text(EyebrowAssetData.nameArray[iterator])
                                                 .foregroundColor(.black)
-                                                .font(.callout)
+                                                .font(.system(size: 14))
+                                            
                                             Spacer()
                                                 .frame(height: 15)
-                                        
+                                            
                                             
                                         }
-                                        .frame(width: 140, height: 125)
+                                        .frame(width: 130, height: 126)
                                         .background(.white)
-                                        .cornerRadius(20)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .inset(by: 2)
-                                                .stroke(.blue, lineWidth: 4)
-                                        )
+                                        .cornerRadius(12)
+                                        .opacity(0.75)
+                                        
                                         if chosenEyebrowNum ?? -1 == iterator {
                                             VStack {
-                                                Spacer().frame(height: 12)
+                                                Spacer().frame(height: 8)
                                                 HStack {
                                                     Spacer()
                                                     Image(systemName: "checkmark.circle.fill")
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 24, height: 24)
-                                                        .foregroundColor(.complementary)
-                                                    Spacer().frame(width: 12)
+                                                        .foregroundColor(.primary)
+                                                    Spacer().frame(width: 8)
                                                 }
                                                 Spacer()
                                             }
-                                            .frame(width: 140, height: 125)
+                                            .frame(width: 130, height: 126)
                                             .allowsHitTesting(false)
                                         }
-                      
+                                        
                                     }
-                                    .padding(.leading, 10)
-                                    
                                 }
+                                
                             }
                         }
+                        .padding(.trailing, 28)
+                        
                     }
+                    
                     Spacer()
-                        .frame(height: 83.0 / 852.0 * UIScreen.main.bounds.height)
+                        .frame(height: isFullScreen ?  67.0 / 852.0 * UIScreen.main.bounds.height : 83.0 / 852.0 * UIScreen.main.bounds.height)
                 }
                 
                 // customize modal view
@@ -170,12 +181,12 @@ struct BrowView: View {
                         ZStack{
                             Color(.gray)
                                 .ignoresSafeArea()
-                                .opacity(0.7)
+                                .opacity(0.75)
                             
                             PopUpView(isScanButtonTapped: $isScanButtonTapped)
-                                .frame(width: 330, height: 430) // Set the size of the
+                                .frame(width: 350, height: 460) // Set the size of the
                                 .background(.white)
-                                .cornerRadius(10)
+                                .cornerRadius(12)
                                 .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                         }
                     }
